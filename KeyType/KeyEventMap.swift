@@ -19,14 +19,14 @@ class KeyEventMap: NSObject {
         get { return output.keyCode }
     }
     
-    init(_ from: KeyCombination, to: KeyCombination, whenWithout: CGEventFlags?) {
-        self.input  = from
-        self.output = to
+    init(_ input: KeyCombination, output: KeyCombination, whenWithout: CGEventFlags?) {
+        self.input  = input
+        self.output = output
         self.withoutModifier = whenWithout ?? CGEventFlags()
     }
     
     convenience init(from: Key, to: Key, whenWithout: CGEventFlags?) {
-        self.init(KeyCombination(from), to: KeyCombination(to), whenWithout: whenWithout)
+        self.init(KeyCombination(from), output: KeyCombination(to), whenWithout: whenWithout)
     }
     
     func renderEventFlagFor(event: CGEvent) -> CGEventFlags {

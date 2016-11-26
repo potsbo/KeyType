@@ -13,13 +13,19 @@ class KeyMapConfiguration {
     private let defaultMask: CGEventFlags
     init() {
         var eventMask: UInt64 = 0
-        for mask in defaultExclusion.map({ $0.rawValue }) {
+        for mask in self.defaultExclusion.map({ $0.rawValue }) {
             eventMask |= mask
         }
         print(String(eventMask, radix: 2))
         self.defaultMask = CGEventFlags(rawValue: eventMask)
         
-        keyMappingList = [
+        self.setDefaultKeyMapping()
+    }
+    
+    private var keyMappingList: [KeyEventMap] = []
+    
+    private func setDefaultKeyMapping() {
+        self.keyMappingList = [
             KeyEventMap(from: .COMMAND_L, to: .EISU, whenWithout: CGEventFlags.maskCommand),
             KeyEventMap(from: .COMMAND_R, to: .KANA, whenWithout: CGEventFlags.maskCommand),
             
@@ -60,12 +66,10 @@ class KeyMapConfiguration {
             KeyEventMap(from: .COMMA,  to: .W, whenWithout: defaultMask),
             KeyEventMap(from: .PERIOD, to: .V, whenWithout: defaultMask),
             KeyEventMap(from: .SLASH,  to: .Z, whenWithout: defaultMask),
-
+            
         ]
+
     }
-    
-    private let keyMappingList: [KeyEventMap]
-    
     
     var mapList: [CGKeyCode: [KeyEventMap]] {
         get {
