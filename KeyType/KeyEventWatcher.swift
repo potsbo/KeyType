@@ -16,29 +16,6 @@ class KeyEventWatcher: NSObject {
         "かな" : ["KeyCode": 54, "VirtualKey": 104],
     ] as Dictionary<String, Dictionary<String, UInt16>>
     
-    override init() {
-        super.init()
-        
-        let checkOptionPrompt = kAXTrustedCheckOptionPrompt.takeRetainedValue() as NSString
-        let options: CFDictionary = [checkOptionPrompt: true] as NSDictionary
-        
-        if !AXIsProcessTrustedWithOptions(options) {
-            self.waitUntillTrusted()
-        } else {
-            self.startWatching()
-        }
-    }
-    
-    func waitUntillTrusted() {
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.watchAXIsProcess(_:)), userInfo: nil, repeats: true)
-    }
-    
-    func watchAXIsProcess(_ timer: Timer) {
-        if AXIsProcessTrusted() {
-            timer.invalidate()
-        }
-    }
-    
     func startWatching() {
         let masks = [
             NSEventMask.keyDown,
