@@ -18,4 +18,10 @@ class KeyEventMap: NSObject {
         self.virtualKey      = to
         self.withoutModifier = whenWithout
     }
+    
+    convenience init(from: Key, to: Key, whenWithout: NSEventModifierFlags) {
+        self.init(from: from.rawValue, to: to.rawValue, whenWithout: whenWithout)
+    }
 }
+
+

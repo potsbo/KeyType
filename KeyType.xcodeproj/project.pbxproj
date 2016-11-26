@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		870105941DE9646100486507 /* KeyEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870105931DE9646100486507 /* KeyEventController.swift */; };
 		870105961DE968CF00486507 /* KeyEventMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870105951DE968CF00486507 /* KeyEventMap.swift */; };
+		870105981DE979DC00486507 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870105971DE979DC00486507 /* Key.swift */; };
 		87EC00B31DE88D3D007C1F66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EC00B21DE88D3D007C1F66 /* AppDelegate.swift */; };
 		87EC00B51DE88D3D007C1F66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EC00B41DE88D3D007C1F66 /* ViewController.swift */; };
 		87EC00B71DE88D3D007C1F66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87EC00B61DE88D3D007C1F66 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		870105931DE9646100486507 /* KeyEventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyEventController.swift; sourceTree = "<group>"; };
 		870105951DE968CF00486507 /* KeyEventMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyEventMap.swift; sourceTree = "<group>"; };
+		870105971DE979DC00486507 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		87EC00AF1DE88D3D007C1F66 /* KeyType.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyType.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87EC00B21DE88D3D007C1F66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87EC00B41DE88D3D007C1F66 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				87EC00DD1DE89151007C1F66 /* KeyEventWatcher.swift */,
 				870105931DE9646100486507 /* KeyEventController.swift */,
 				870105951DE968CF00486507 /* KeyEventMap.swift */,
+				870105971DE979DC00486507 /* Key.swift */,
 				87EC00B61DE88D3D007C1F66 /* Assets.xcassets */,
 				87EC00B81DE88D3D007C1F66 /* Main.storyboard */,
 				87EC00BB1DE88D3D007C1F66 /* Info.plist */,
@@ -268,6 +271,7 @@
 				870105961DE968CF00486507 /* KeyEventMap.swift in Sources */,
 				87EC00B31DE88D3D007C1F66 /* AppDelegate.swift in Sources */,
 				87EC00DE1DE89151007C1F66 /* KeyEventWatcher.swift in Sources */,
+				870105981DE979DC00486507 /* Key.swift in Sources */,
 				870105941DE9646100486507 /* KeyEventController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

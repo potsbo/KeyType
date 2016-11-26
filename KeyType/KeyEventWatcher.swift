@@ -13,8 +13,8 @@ class KeyEventWatcher: NSObject {
     
     // exclude here to config file
     let keyMaps = [
-        KeyEventMap(from: 55, to: 102, whenWithout: NSEventModifierFlags.command),
-        KeyEventMap(from: 54, to: 104, whenWithout: NSEventModifierFlags.command),
+        KeyEventMap(from: .L_CMD, to: .EISU, whenWithout: NSEventModifierFlags.command),
+        KeyEventMap(from: .R_CMD, to: .KANA, whenWithout: NSEventModifierFlags.command),
     ]
     
     func startWatching() {
