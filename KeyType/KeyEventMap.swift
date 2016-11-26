@@ -29,6 +29,18 @@ class KeyEventMap: NSObject {
         self.init(KeyCombination(from), output: KeyCombination(to), whenWithout: whenWithout)
     }
     
+    convenience init(from: Key, to: Key) {
+        self.init(KeyCombination(from), output: KeyCombination(to), whenWithout: nil)
+    }
+    
+    convenience init(from: Key, to: KeyCombination) {
+        self.init(KeyCombination(from), output: to, whenWithout: nil)
+    }
+    
+    convenience init(from: KeyCombination, to: KeyCombination) {
+        self.init(from, output: to, whenWithout: nil)
+    }
+    
     convenience init(from: Key, to: KeyCombination, whenWithout: CGEventFlags?) {
         self.init(KeyCombination(from), output: to, whenWithout: whenWithout)
     }

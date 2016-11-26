@@ -19,6 +19,7 @@ class LRDvorak: KeyMapConfiguration {
         self.keyMappingList += kanaEisuMappings
         self.keyMappingList += dvorakBaseMappings
         self.keyMappingList += numberMappings
+        self.keyMappingList += symbolMappings
     }
     
     private let dvorakBase: [Key : Key] = [
@@ -55,6 +56,26 @@ class LRDvorak: KeyMapConfiguration {
             let shift   = Key.numbers().map  {
                 KeyEventMap(from: KeyCombination($0, withModifier: .maskShift),to: $0, whenWithout: defaultMask )}
             return noshift + addShift + shift
+        }
+    }
+    
+    private var symbolMappings: [KeyEventMap] {
+        get {
+            return [
+                KeyEventMap(from: .SQUARE_BRA, to: .SLASH),
+                KeyEventMap(from: .QUOTE, to: .MINUS),
+                
+                KeyEventMap(from: .SQUARE_KET, to: KeyCombination(.NUM2, withModifier: .maskShift), whenWithout: .maskShift),
+                KeyEventMap(from: KeyCombination(.SQUARE_KET, withModifier: .maskShift), to: KeyCombination(.NUM6, withModifier: .maskShift)),
+                
+                KeyEventMap(from: .MINUS, to: KeyCombination(.NUM7, withModifier: .maskShift), whenWithout: .maskShift),
+                KeyEventMap(from: KeyCombination(.MINUS, withModifier: .maskShift), to: KeyCombination(.NUM5, withModifier: .maskShift)),
+                
+                KeyEventMap(from: .EQUAL, to: .BACKQUOTE, whenWithout: .maskShift),
+                KeyEventMap(from: KeyCombination(.EQUAL, withModifier: .maskShift), to: KeyCombination(.NUM3, withModifier: .maskShift)),
+                
+                KeyEventMap(from: .BACKQUOTE, to: KeyCombination(.NUM4, withModifier: .maskShift), whenWithout: .maskShift),
+            ]
         }
     }
 }
