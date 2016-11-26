@@ -23,7 +23,6 @@ class KeyEventController {
     }
     
     func waitUntillTrusted() {
-        print("not trusted")
         Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(KeyEventController.watchAXIsProcess(_:)), userInfo: nil, repeats: true)
     }
     

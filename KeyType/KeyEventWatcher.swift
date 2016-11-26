@@ -38,7 +38,6 @@ class KeyEventWatcher {
     }
     
     func startWatching() {
-        print("start watching")
         guard let eventTap = eventTap() else {
             print("failed to create event tap")
             exit(1)
