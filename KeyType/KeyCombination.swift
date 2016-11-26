@@ -79,7 +79,6 @@ class KeyCombination {
         {
             return false
         }
-        
-        return true
+        return self.flags.rawValue & mapping.withoutModifier.rawValue == 0
     }
 }
