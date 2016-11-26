@@ -11,6 +11,7 @@ import Cocoa
 class KeyEventWatcher: NSObject {
     var keyCode: UInt16? = nil
     
+    // exclude here to config file
     let keyMaps = [
         KeyEventMap(from: 55, to: 102, whenWithout: NSEventModifierFlags.command),
         KeyEventMap(from: 54, to: 104, whenWithout: NSEventModifierFlags.command),
