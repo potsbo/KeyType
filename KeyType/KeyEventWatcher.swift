@@ -11,10 +11,10 @@ import Cocoa
 class KeyEventWatcher: NSObject {
     var keyCode: UInt16? = nil
     
-    let keys = [
-        "英数" : ["KeyCode": 55, "VirtualKey": 102],
-        "かな" : ["KeyCode": 54, "VirtualKey": 104],
-    ] as Dictionary<String, Dictionary<String, UInt16>>
+    let keyMaps = [
+        KeyEventMap(from: 55, to: 102, whenWithout: NSEventModifierFlags.command),
+        KeyEventMap(from: 54, to: 104, whenWithout: NSEventModifierFlags.command),
+    ]
     
     func startWatching() {
         let masks = [
@@ -28,16 +28,15 @@ class KeyEventWatcher: NSObject {
         }
         
         NSEvent.addGlobalMonitorForEvents(matching: NSEventMask.flagsChanged, handler: { (event: NSEvent!) -> Void in
-            for (key, values) in self.keys {
-                if event.keyCode == values["KeyCode"] {
-                    if event.modifierFlags.contains(.command) {
-                        self.keyCode = values["KeyCode"]
-                    } else if self.keyCode == values["KeyCode"]  {
-                        print(key) // debug
+            for map in self.keyMaps {
+                if event.keyCode == map.keyCode {
+                    if event.modifierFlags.contains(map.withoutModifier) {
+                        self.keyCode = map.keyCode
+                    } else if self.keyCode == map.keyCode {
                         let loc = CGEventTapLocation.cghidEventTap
                         let keyStatus = [true, false]
                         for status in keyStatus {
-                            CGEvent(keyboardEventSource: nil, virtualKey: values["VirtualKey"]!, keyDown: status)?.post(tap: loc)
+                            CGEvent(keyboardEventSource: nil, virtualKey: map.virtualKey, keyDown: status)?.post(tap: loc)
                         }
                     }
                 }
