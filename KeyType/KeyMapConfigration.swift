@@ -11,8 +11,8 @@ import Cocoa
 class KeyMapConfiguration {
     
     private let keyMappingList = [
-        KeyEventMap(from: .COMMAND_L, to: .EISU, whenWithout: NSEventModifierFlags.command),
-        KeyEventMap(from: .COMMAND_R, to: .KANA, whenWithout: NSEventModifierFlags.command),
+        KeyEventMap(from: .COMMAND_L, to: .EISU, whenWithout: CGEventFlags.maskCommand),
+        KeyEventMap(from: .COMMAND_R, to: .KANA, whenWithout: CGEventFlags.maskCommand),
     ]
     
     var mapList: [CGKeyCode: [KeyEventMap]] {

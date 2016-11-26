@@ -11,7 +11,7 @@ import Cocoa
 class KeyEventMap: NSObject {
     let input:  KeyCombination
     let output: KeyCombination
-    let withoutModifier: NSEventModifierFlags?
+    let withoutModifier: CGEventFlags
     var outputValue: Int64 {
         get { return Int64(output.keyCode) }
     }
@@ -19,13 +19,13 @@ class KeyEventMap: NSObject {
         get { return output.keyCode }
     }
     
-    init(_ from: KeyCombination, to: KeyCombination, whenWithout: NSEventModifierFlags?) {
+    init(_ from: KeyCombination, to: KeyCombination, whenWithout: CGEventFlags?) {
         self.input  = from
         self.output = to
-        self.withoutModifier = whenWithout
+        self.withoutModifier = whenWithout ?? CGEventFlags()
     }
     
-    convenience init(from: Key, to: Key, whenWithout: NSEventModifierFlags?) {
+    convenience init(from: Key, to: Key, whenWithout: CGEventFlags?) {
         self.init(KeyCombination(from), to: KeyCombination(to), whenWithout: whenWithout)
     }
     
