@@ -18,6 +18,7 @@ class LRDvorak: KeyMapConfiguration {
         self.keyMappingList = []
         self.keyMappingList += kanaEisuMappings
         self.keyMappingList += dvorakBaseMappings
+        self.keyMappingList += numberMappings
     }
     
     private let dvorakBase: [Key : Key] = [
@@ -34,6 +35,26 @@ class LRDvorak: KeyMapConfiguration {
     private var dvorakBaseMappings: [KeyEventMap] {
         get {
             return self.dvorakBase.map { KeyEventMap(from: $0, to: $1, whenWithout: defaultMask) }
+        }
+    }
+    
+    private let numbers: [Key : Key] = [
+        .NUM1:.NUM1,  .NUM3:.SQUARE_BRA, .NUM4:.NUM9,
+        .NUM6:.EQUAL, .NUM7:.NUM0,       .NUM8:.SQUARE_KET, .NUM0:.NUM8,
+    ]
+    
+    private let numbersToAddShift: [Key : Key] = [
+        .NUM2:.SQUARE_BRA, .NUM5:.EQUAL, .NUM9:.SQUARE_KET
+    ]
+
+    private var numberMappings: [KeyEventMap] {
+        get {
+            let noshift = self.numbers.map { KeyEventMap(from: $0, to: KeyCombination($1, withModifier: .maskShift), whenWithout: .maskShift) }
+            let addShift = self.numbersToAddShift.map { KeyEventMap(from: $0, to: $1, whenWithout: .maskShift) }
+
+            let shift   = Key.numbers().map  {
+                KeyEventMap(from: KeyCombination($0, withModifier: .maskShift),to: $0, whenWithout: defaultMask )}
+            return noshift + addShift + shift
         }
     }
 }

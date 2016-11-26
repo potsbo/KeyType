@@ -134,4 +134,8 @@ enum Key : UInt16 {
     case BRIGHTNESS_UP       = 144
     case BRIGHTNESS_DOWN     = 145
     case EXPOSE_ALL          = 160
+    
+    static func numbers() -> [Key] {
+        return [.NUM1, .NUM2, .NUM3, .NUM4, .NUM5, .NUM6, .NUM7, .NUM8, .NUM9, .NUM0]
+    }
 }
