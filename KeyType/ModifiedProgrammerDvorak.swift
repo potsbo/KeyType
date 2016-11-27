@@ -26,37 +26,37 @@ class LRDvorak: KeyMapConfiguration {
         self.keyMappingList = maps.map { KeyEventMap($0[0], to: $0[1]) }
     }
     
-    private let dvorakBase: [Key : Key] = [
-        .S:.O, .D:.E, .F:.U, .G:.I,
-        .H:.D, .J:.H, .K:.T, .L:.N, .SEMICOLON:.S,
-        
-        .Q:.QUOTE, .W:.COMMA, .E:.PERIOD, .R:.P, .T:.Y,
-        .Y:.F, .U:.G, .I:.C, .O:.R, .P:.L,
-        
-        .Z: .SEMICOLON, .X: .Q, .C: .J, .V: .K, .B: .X,
-        .N: .B, .M: .M, .COMMA : .W, .PERIOD: .V,.SLASH : .Z
-    ]
-    
     private var dvorakBaseMappings: [[KeyCombination]] {
-        get { return self.dvorakBase.map { [$0.without.ctrl.option.command, $1.alone] } }
+        get {
+            let dvorakBase: [Key : Key] = [
+                .Q:.QUOTE, .W:.COMMA, .E:.PERIOD, .R:.P, .T:.Y,
+                .Y:.F, .U:.G, .I:.C, .O:.R, .P:.L,
+                
+                .A:.A, .S:.O, .D:.E, .F:.U, .G:.I,
+                .H:.D, .J:.H, .K:.T, .L:.N, .SEMICOLON:.S,
+                
+                .Z:.SEMICOLON, .X:.Q, .C:.J, .V:.K, .B:.X,
+                .N:.B, .M:.M, .COMMA:.W, .PERIOD:.V, .SLASH:.Z
+            ]
+            
+            return dvorakBase.map { [$0.without.ctrl.option.command, $1.alone] }
+        }
     }
-    
-    private let numbers: [Key : Key] = [
-        .NUM1:.NUM1,  .NUM3:.SQUARE_BRA, .NUM4:.NUM9,
-        .NUM6:.EQUAL, .NUM7:.NUM0,       .NUM8:.SQUARE_KET, .NUM0:.NUM8,
-    ]
-    
-    private let numbersToAddShift: [Key : Key] = [
-        .NUM2:.SQUARE_BRA, .NUM5:.EQUAL, .NUM9:.SQUARE_KET
-    ]
 
     private var numberMappings: [[KeyCombination]] {
         get {
-            let noshift  = self.numbers.map { [$0.without.shift, $1.with.shift] }
-            let addShift = self.numbersToAddShift.map { [$0.without.shift, $1.alone] }
-
-            let shift   = Key.numbers().map  { [$0.with.shift.without.ctrl.option.command, $0.alone]}
-            return noshift + addShift + shift
+            let numbersShifted: [Key : Key] = [
+                .NUM1:.NUM1,  .NUM3:.SQUARE_BRA, .NUM4:.NUM9,
+                .NUM6:.EQUAL, .NUM7:.NUM0,       .NUM8:.SQUARE_KET, .NUM0:.NUM8
+            ]
+            let numbersNotShifted: [Key : Key] = [
+                .NUM2:.SQUARE_BRA, .NUM5:.EQUAL, .NUM9:.SQUARE_KET
+            ]
+            
+            let addShift = numbersShifted.map    { [$0.without.shift, $1.with.shift] }
+            let noShift  = numbersNotShifted.map { [$0.without.shift, $1.alone] }
+            let shifts   = Key.numbers.map       { [$0.with.shift.without.ctrl.option.command, $0.alone] }
+            return noShift + addShift + shifts
         }
     }
     

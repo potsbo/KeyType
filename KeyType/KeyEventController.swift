@@ -10,7 +10,8 @@ import Foundation
 
 class KeyEventController {
     
-    let watcher = KeyEventWatcher()
+    private let watcher = KeyEventWatcher()
+    
     init() {
         let checkOptionPrompt = kAXTrustedCheckOptionPrompt.takeRetainedValue() as NSString
         let options: CFDictionary = [checkOptionPrompt: true] as NSDictionary
@@ -22,11 +23,11 @@ class KeyEventController {
         }
     }
     
-    func waitUntillTrusted() {
+    private func waitUntillTrusted() {
         Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(KeyEventController.watchAXIsProcess(_:)), userInfo: nil, repeats: true)
     }
     
-    @objc func watchAXIsProcess(_ timer: Timer) {
+    @objc private func watchAXIsProcess(_ timer: Timer) {
         if AXIsProcessTrusted() {
             timer.invalidate()
         }

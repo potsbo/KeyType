@@ -10,16 +10,11 @@ import Cocoa
 
 class KeyEventMap: NSObject {
     let input:  KeyCombination
-    let output: KeyCombination
-    var outputValue: Int64 {
-        get { return Int64(output.keyCode) }
-    }
-    var outputKeyCode: CGKeyCode {
-        get { return output.keyCode }
-    }
+    private let output: KeyCombination
+    var outputValue: Int64 { get { return Int64(outputKeyCode) } }
+    var outputKeyCode: CGKeyCode { get { return output.keyCode } }
     
     init(_ from: KeyCombination, to: KeyCombination) {
-        print(from.toString())
         self.input  = from
         self.output = to
     }
@@ -29,11 +24,7 @@ class KeyEventMap: NSObject {
         return CGEventFlags(rawValue: rawValue)
     }
     
-    var withoutModifier: CGEventFlags {
-        get { return self.input.withoutModifier }
-    }
-    
     func hasAnyModToAvoid(_ flags: CGEventFlags) -> Bool {
-        return flags.rawValue & self.withoutModifier.rawValue == 0
+        return flags.rawValue & self.input.withoutModifier.rawValue == 0
     }
 }

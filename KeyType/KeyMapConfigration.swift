@@ -9,14 +9,6 @@
 import Cocoa
 
 class KeyMapConfiguration {
-    static func mergeMask(_ masks: [CGEventFlags]) -> CGEventFlags {
-        var eventMask: UInt64 = 0
-        for mask in masks.map({ $0.rawValue }) {
-            eventMask |= mask
-        }
-        return CGEventFlags(rawValue: eventMask)
-    }
-    
     var keyMappingList: [KeyEventMap] = []
     
     let kanaEisuMappings = [
