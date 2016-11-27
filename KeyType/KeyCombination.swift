@@ -9,60 +9,93 @@
 import Cocoa
 
 class KeyCombination {
-    let keyCode: CGKeyCode
-    let flags:   CGEventFlags
+    let keyCode:        CGKeyCode
+    var flags         = CGEventFlags()
+    private var withoutFlags  = CGEventFlags()
+    private var addToWithFlag = true
+    
+    var withoutModifier: CGEventFlags {
+        get { return withoutFlags }
+    }
     
     init(fromEvent: CGEvent) {
         self.keyCode = fromEvent.keyCode
         self.flags   = fromEvent.flags
     }
     
-    init(keyCode: CGKeyCode, flags: CGEventFlags = CGEventFlags()) {
-        self.keyCode = keyCode
-        self.flags   = flags
+    init(_ key: Key) {
+        self.keyCode = key.rawValue
     }
     
-    convenience init(_ key: Key, withModifier: CGEventFlags = CGEventFlags()){
-        self.init(keyCode: key.rawValue, flags: withModifier)
+    private func addMask(_ mask: CGEventFlags) -> KeyCombination{
+        if self.addToWithFlag {
+            self.flags.insert(mask)
+        } else {
+            self.withoutFlags.insert(mask)
+        }
+        return self
     }
     
-    func toString() -> String {
-        guard let key = Key(rawValue: keyCode) else { return flagString() }
-        return flagString() + String(describing: key)
+    var shift: KeyCombination {
+        get { return self.addMask(.maskShift) }
     }
     
-    private func flagString() -> String {
-        var flagString = ""
-        if has(modifier: .maskSecondaryFn) { flagString += "(fn)" }
-        if has(modifier: .maskAlphaShift)  { flagString += "⇪" }
-        if has(modifier: .maskCommand)     { flagString += "⌘" }
-        if has(modifier: .maskShift)       { flagString += "⇧" }
-        if has(modifier: .maskControl)     { flagString += "⌃" }
-        if has(modifier: .maskAlternate)   { flagString += "⌥" }
-        return flagString
+    var ctrl: KeyCombination {
+        get { return self.addMask(.maskControl) }
+    }
+    
+    var command: KeyCombination {
+        get { return self.addMask(.maskCommand) }
+    }
+    
+    var option: KeyCombination {
+        get { return self.addMask(.maskAlternate) }
+    }
+    
+    private func setModeExAddition() {
+        self.addToWithFlag = false
+    }
+    
+    var without: KeyCombination {
+        get {
+            self.setModeExAddition()
+            return self
+        }
+    }
+    
+    var label: String {
+        get {
+            guard let key = Key(rawValue: keyCode) else { return flagString }
+            return flagString + String(describing: key)
+        }
+    }
+    
+    private var flagString:  String {
+        get {
+            var flagString = ""
+            if has(modifier: .maskSecondaryFn) { flagString += "(fn)" }
+            if has(modifier: .maskAlphaShift)  { flagString += "⇪" }
+            if has(modifier: .maskCommand)     { flagString += "⌘" }
+            if has(modifier: .maskShift)       { flagString += "⇧" }
+            if has(modifier: .maskControl)     { flagString += "⌃" }
+            if has(modifier: .maskAlternate)   { flagString += "⌥" }
+            return flagString
+        }
+        
     }
     
     private func has(modifier key: CGEventFlags ) -> Bool {
-        return self.flags.rawValue & key.rawValue != 0 && !modifierKeyCodes[key.rawValue]!.contains(keyCode)
+        return self.flags.contains(key)
     }
-    
-    private let modifierKeyCodes: [UInt64: [CGKeyCode]] = [
-        CGEventFlags.maskCommand.rawValue:   [54, 55],
-        CGEventFlags.maskShift.rawValue:     [56, 60],
-        CGEventFlags.maskControl.rawValue:   [59, 62],
-        CGEventFlags.maskAlternate.rawValue: [58, 61],
-        CGEventFlags.maskSecondaryFn.rawValue:   [63],
-        CGEventFlags.maskAlphaShift.rawValue:    [57],
-    ]
     
     func postEvent() -> Void {
         let loc = CGEventTapLocation.cghidEventTap
         
         let keyDownEvent = CGEvent(keyboardEventSource: nil, virtualKey: keyCode, keyDown: true)!
-        let keyUpEvent = CGEvent(keyboardEventSource: nil, virtualKey: keyCode, keyDown: false)!
+        let keyUpEvent   = CGEvent(keyboardEventSource: nil, virtualKey: keyCode, keyDown: false)!
         
         keyDownEvent.flags = flags
-        keyUpEvent.flags = CGEventFlags()
+        keyUpEvent.flags   = CGEventFlags()
         
         keyDownEvent.post(tap: loc)
         keyUpEvent.post(tap: loc)
@@ -79,6 +112,6 @@ class KeyCombination {
         {
             return false
         }
-        return self.flags.rawValue & mapping.withoutModifier.rawValue == 0
+        return mapping.hasAnyModToAvoid(flags)
     }
 }

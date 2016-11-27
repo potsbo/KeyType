@@ -18,19 +18,15 @@ extension CGEvent {
         }
     }
     
-    private func has(modifier: CGEventFlags) -> Bool {
-        return self.flags.rawValue & modifier.rawValue != 0
-    }
-    
     func isModiferKeyDownEvent() -> Bool {
         guard let flag = modifierMasks[keyCode] else {
             return false
         }
-        return has(modifier: flag) && isModiferKeyEvent()
+        return flags.contains(flag) && isModiferKeyEvent()
     }
     
     func isModiferKeyEvent() -> Bool {
-      return modifierMasks[keyCode] != nil
+        return modifierMasks[keyCode] != nil
     }
 }
 

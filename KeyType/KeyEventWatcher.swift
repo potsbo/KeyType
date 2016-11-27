@@ -8,33 +8,30 @@
 
 import Cocoa
 
-
-import Cocoa
-
 class KeyEventWatcher {
     private var keyCode: CGKeyCode? = nil
     private let bundleId = Bundle.main.infoDictionary?["CFBundleIdentifier"] as! String
     private let config = LRDvorak()
     
-    private func eventMask() -> UInt32 {
-        let eventMaskList : [CGEventType] = [
-            .keyDown,
-            .keyUp,
-            .flagsChanged,
-            .leftMouseDown,
-            .leftMouseUp,
-            .rightMouseDown,
-            .rightMouseUp,
-            .otherMouseDown,
-            .otherMouseUp,
-            .scrollWheel
-        ]
-        
-        var eventMask: UInt32 = 0
-        for mask in eventMaskList.map({ $0.rawValue }) {
-            eventMask |= (1 << mask)
+    private var eventMaskToWatch: CGEventMask {
+        get {
+            let eventTypeList : [CGEventType] = [
+                .keyDown,
+                .keyUp,
+                .flagsChanged,
+                .leftMouseDown,
+                .leftMouseUp,
+                .rightMouseDown,
+                .rightMouseUp,
+                .otherMouseDown,
+                .otherMouseUp,
+                .scrollWheel
+            ]
+            
+            let maskBits = eventTypeList.map { $0.rawValue }.map { 1 << $0 }
+            let maskBit  = maskBits.reduce(UInt32(0), | )
+            return CGEventMask(maskBit)
         }
-        return eventMask
     }
     
     func startWatching() {
@@ -53,18 +50,16 @@ class KeyEventWatcher {
     private func eventTap() -> CFMachPort? {
         let observer = UnsafeMutableRawPointer(Unmanaged.passRetained(self).toOpaque())
         func callback (proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, refcon: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>? {
-            if let observer = refcon {
-                let mySelf = Unmanaged<KeyEventWatcher>.fromOpaque(observer).takeUnretainedValue()
-                return mySelf.eventCallback(proxy: proxy, type: type, event: event)
-            }
-            return Unmanaged.passRetained(event)
+            guard let observer = refcon else { return Unmanaged.passRetained(event) }
+            let mySelf = Unmanaged<KeyEventWatcher>.fromOpaque(observer).takeUnretainedValue()
+            return mySelf.eventCallback(proxy: proxy, type: type, event: event)
         }
         
         let tap = CGEvent.tapCreate(
             tap:              .cgSessionEventTap,
             place:            .headInsertEventTap,
             options:          .defaultTap,
-            eventsOfInterest: CGEventMask(eventMask()),
+            eventsOfInterest: eventMaskToWatch,
             callback:         callback,
             userInfo:         observer
         )

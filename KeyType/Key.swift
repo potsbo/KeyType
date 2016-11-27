@@ -62,7 +62,7 @@ enum Key : UInt16 {
     case BACKQUOTE = 50
     case DELETE    = 51
     case ENTER_POWERBOOK = 52
-    case POWER     = 53
+    case ESCAPE    = 53
     case COMMAND_R = 54
     case COMMAND_L = 55
     case SHIFT_L   = 56
@@ -135,7 +135,27 @@ enum Key : UInt16 {
     case BRIGHTNESS_DOWN     = 145
     case EXPOSE_ALL          = 160
     
-    static func numbers() -> [Key] {
+    static var numbers: [Key] {
+        get {
         return [.NUM1, .NUM2, .NUM3, .NUM4, .NUM5, .NUM6, .NUM7, .NUM8, .NUM9, .NUM0]
+        }
+    }
+    
+    static var modifiers: [Key] {
+        get {
+            return [.COMMAND_L, .COMMAND_R, .SHIFT_L, .SHIFT_R, .CONTROL_L, .CONTROL_R, .OPTION_L, .OPTION_R, .FN, .CAPSLOCK]
+        }
+    }
+    
+    var alone: KeyCombination {
+        get { return KeyCombination(self) }
+    }
+    
+    var with: KeyCombination {
+        get { return alone }
+    }
+    
+    var without: KeyCombination {
+        get { return alone.without }
     }
 }

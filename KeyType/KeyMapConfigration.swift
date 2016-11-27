@@ -9,22 +9,11 @@
 import Cocoa
 
 class KeyMapConfiguration {
-    private let defaultExclusion : [CGEventFlags] = [.maskCommand, .maskControl, .maskAlternate]
-    let defaultMask: CGEventFlags
-    init() {
-        var eventMask: UInt64 = 0
-        for mask in self.defaultExclusion.map({ $0.rawValue }) {
-            eventMask |= mask
-        }
-        print(String(eventMask, radix: 2))
-        self.defaultMask = CGEventFlags(rawValue: eventMask)
-    }
-    
     var keyMappingList: [KeyEventMap] = []
     
     let kanaEisuMappings = [
-        KeyEventMap(from: .COMMAND_L, to: .EISU, whenWithout: CGEventFlags.maskCommand),
-        KeyEventMap(from: .COMMAND_R, to: .KANA, whenWithout: CGEventFlags.maskCommand),
+        [Key.COMMAND_L.without.command, Key.EISU.alone],
+        [Key.COMMAND_R.without.command, Key.KANA.alone]
     ]
     
     var mapList: [CGKeyCode: [KeyEventMap]] {
@@ -51,6 +40,7 @@ class KeyMapConfiguration {
         }
         needsRehashing = false
     }
+
 }
 
 
