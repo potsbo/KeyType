@@ -10,7 +10,7 @@ import Cocoa
 
 class KeyCombination {
     let keyCode: CGKeyCode
-    let flags:   CGEventFlags
+    var flags:   CGEventFlags
     
     init(fromEvent: CGEvent) {
         self.keyCode = fromEvent.keyCode
@@ -24,6 +24,27 @@ class KeyCombination {
     
     convenience init(_ key: Key, withModifier: CGEventFlags = CGEventFlags()){
         self.init(keyCode: key.rawValue, flags: withModifier)
+    }
+    
+    func addMask(_ mask: CGEventFlags) -> KeyCombination{
+        self.flags = CGEventFlags(rawValue: flags.rawValue | mask.rawValue)
+        return self
+    }
+    
+    var shift: KeyCombination {
+        get { return self.addMask(.maskShift) }
+    }
+    
+    var ctrl: KeyCombination {
+        get { return self.addMask(.maskControl) }
+    }
+    
+    var command: KeyCombination {
+        get { return self.addMask(.maskCommand) }
+    }
+    
+    var option: KeyCombination {
+        get { return self.addMask(.maskAlternate) }
     }
     
     func toString() -> String {

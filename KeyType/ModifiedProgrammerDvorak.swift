@@ -36,7 +36,7 @@ class LRDvorak: KeyMapConfiguration {
     
     private var dvorakBaseMappings: [KeyEventMap] {
         get {
-            return self.dvorakBase.map { KeyEventMap(from: $0, to: $1, whenWithout: defaultMask) }
+            return self.dvorakBase.map { KeyEventMap($0.alone, to: $1.alone, whenWithout: defaultMask) }
         }
     }
     
@@ -51,11 +51,11 @@ class LRDvorak: KeyMapConfiguration {
 
     private var numberMappings: [KeyEventMap] {
         get {
-            let noshift = self.numbers.map { KeyEventMap(from: $0, to: KeyCombination($1, withModifier: .maskShift), whenWithout: .maskShift) }
-            let addShift = self.numbersToAddShift.map { KeyEventMap(from: $0, to: $1, whenWithout: .maskShift) }
+            let noshift = self.numbers.map { KeyEventMap($0.alone, to: $1.with.shift, whenWithout: .maskShift) }
+            let addShift = self.numbersToAddShift.map { KeyEventMap($0.alone, to: $1.alone, whenWithout: .maskShift) }
 
             let shift   = Key.numbers().map  {
-                KeyEventMap(from: KeyCombination($0, withModifier: .maskShift),to: $0, whenWithout: defaultMask )}
+                KeyEventMap($0.with.shift,to: $0.alone, whenWithout: defaultMask )}
             return noshift + addShift + shift
         }
     }
@@ -63,19 +63,19 @@ class LRDvorak: KeyMapConfiguration {
     private var symbolMappings: [KeyEventMap] {
         get {
             return [
-                KeyEventMap(from: .SQUARE_BRA, to: .SLASH),
-                KeyEventMap(from: .QUOTE, to: .MINUS),
+                KeyEventMap(Key.SQUARE_BRA.alone,      to: Key.SLASH.alone),
+                KeyEventMap(Key.QUOTE.alone,           to: Key.MINUS.alone),
                 
-                KeyEventMap(from: .SQUARE_KET, to: KeyCombination(.NUM2, withModifier: .maskShift), whenWithout: .maskShift),
-                KeyEventMap(from: KeyCombination(.SQUARE_KET, withModifier: .maskShift), to: KeyCombination(.NUM6, withModifier: .maskShift)),
+                KeyEventMap(Key.SQUARE_KET.alone,      to: Key.NUM2.with.shift, whenWithout: .maskShift),
+                KeyEventMap(Key.SQUARE_KET.with.shift, to: Key.NUM6.with.shift),
                 
-                KeyEventMap(from: .MINUS, to: KeyCombination(.NUM7, withModifier: .maskShift), whenWithout: .maskShift),
-                KeyEventMap(from: KeyCombination(.MINUS, withModifier: .maskShift), to: KeyCombination(.NUM5, withModifier: .maskShift)),
+                KeyEventMap(Key.MINUS.alone,           to: Key.NUM7.with.shift, whenWithout: .maskShift),
+                KeyEventMap(Key.MINUS.with.shift,      to: Key.NUM5.with.shift),
                 
-                KeyEventMap(from: .EQUAL, to: .BACKQUOTE, whenWithout: .maskShift),
-                KeyEventMap(from: KeyCombination(.EQUAL, withModifier: .maskShift), to: KeyCombination(.NUM3, withModifier: .maskShift)),
+                KeyEventMap(Key.EQUAL.alone,           to: Key.BACKQUOTE.alone, whenWithout: .maskShift),
+                KeyEventMap(Key.EQUAL.with.shift,      to: Key.NUM3.with.shift),
                 
-                KeyEventMap(from: .BACKQUOTE, to: KeyCombination(.NUM4, withModifier: .maskShift), whenWithout: .maskShift),
+                KeyEventMap(Key.BACKQUOTE.alone,       to: Key.NUM4.with.shift, whenWithout: .maskShift),
             ]
         }
     }
@@ -83,8 +83,13 @@ class LRDvorak: KeyMapConfiguration {
     private var emacsMappings: [KeyEventMap] {
         get {
             return [
-                KeyEventMap(from: .CONTROL_L, to: .ESCAPE, whenWithout: .maskControl),
-                KeyEventMap(from: KeyCombination(.J, withModifier: .maskControl), to: .RETURN)
+                KeyEventMap(Key.CONTROL_L.alone, to: Key.ESCAPE.alone, whenWithout: .maskControl),
+                KeyEventMap(Key.J.with.ctrl,     to: Key.RETURN.alone),
+                KeyEventMap(Key.F.with.ctrl,     to: Key.RIGHT_ARROW.alone),
+                KeyEventMap(Key.B.with.ctrl,     to: Key.LEFT_ARROW.alone),
+                KeyEventMap(Key.N.with.ctrl,     to: Key.DOWN_ARROW.alone),
+                KeyEventMap(Key.P.with.ctrl,     to: Key.UP_ARROW.alone),
+                KeyEventMap(Key.H.with.ctrl,     to: Key.DELETE.alone),
             ]
         }
     }

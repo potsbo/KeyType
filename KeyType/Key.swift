@@ -138,4 +138,12 @@ enum Key : UInt16 {
     static func numbers() -> [Key] {
         return [.NUM1, .NUM2, .NUM3, .NUM4, .NUM5, .NUM6, .NUM7, .NUM8, .NUM9, .NUM0]
     }
+    
+    var alone: KeyCombination {
+        get { return KeyCombination(self) }
+    }
+    
+    var with: KeyCombination {
+        get { return KeyCombination(self) }
+    }
 }

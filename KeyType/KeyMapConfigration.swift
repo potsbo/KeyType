@@ -16,15 +16,22 @@ class KeyMapConfiguration {
         for mask in self.defaultExclusion.map({ $0.rawValue }) {
             eventMask |= mask
         }
-        print(String(eventMask, radix: 2))
-        self.defaultMask = CGEventFlags(rawValue: eventMask)
+        self.defaultMask = KeyMapConfiguration.mergeMask(defaultExclusion)
+    }
+
+    static func mergeMask(_ masks: [CGEventFlags]) -> CGEventFlags {
+        var eventMask: UInt64 = 0
+        for mask in masks.map({ $0.rawValue }) {
+            eventMask |= mask
+        }
+        return CGEventFlags(rawValue: eventMask)
     }
     
     var keyMappingList: [KeyEventMap] = []
     
     let kanaEisuMappings = [
-        KeyEventMap(from: .COMMAND_L, to: .EISU, whenWithout: .maskCommand),
-        KeyEventMap(from: .COMMAND_R, to: .KANA, whenWithout: .maskCommand),
+        KeyEventMap(Key.COMMAND_L.alone, to: Key.EISU.alone, whenWithout: .maskCommand),
+        KeyEventMap(Key.COMMAND_R.alone, to: Key.KANA.alone, whenWithout: .maskCommand),
     ]
     
     var mapList: [CGKeyCode: [KeyEventMap]] {
