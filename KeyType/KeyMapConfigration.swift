@@ -30,8 +30,8 @@ class KeyMapConfiguration {
     var keyMappingList: [KeyEventMap] = []
     
     let kanaEisuMappings = [
-        KeyEventMap(Key.COMMAND_L.alone, to: Key.EISU.alone, whenWithout: .maskCommand),
-        KeyEventMap(Key.COMMAND_R.alone, to: Key.KANA.alone, whenWithout: .maskCommand),
+        [Key.COMMAND_L.without.command, Key.EISU.alone],
+        [Key.COMMAND_R.without.command, Key.KANA.alone]
     ]
     
     var mapList: [CGKeyCode: [KeyEventMap]] {

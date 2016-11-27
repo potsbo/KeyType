@@ -9,25 +9,30 @@
 import Cocoa
 
 class KeyCombination {
-    let keyCode: CGKeyCode
-    var flags:   CGEventFlags
+    let keyCode:        CGKeyCode
+    var flags         = CGEventFlags()
+    var withoutFlags  = CGEventFlags()
+    var addToWithFlag = true
+    
+    var withoutModifier: CGEventFlags {
+        get { return withoutFlags }
+    }
     
     init(fromEvent: CGEvent) {
         self.keyCode = fromEvent.keyCode
         self.flags   = fromEvent.flags
     }
     
-    init(keyCode: CGKeyCode, flags: CGEventFlags = CGEventFlags()) {
-        self.keyCode = keyCode
-        self.flags   = flags
+    init(_ key: Key) {
+        self.keyCode = key.rawValue
     }
     
-    convenience init(_ key: Key, withModifier: CGEventFlags = CGEventFlags()){
-        self.init(keyCode: key.rawValue, flags: withModifier)
-    }
-    
-    func addMask(_ mask: CGEventFlags) -> KeyCombination{
-        self.flags = CGEventFlags(rawValue: flags.rawValue | mask.rawValue)
+    private func addMask(_ mask: CGEventFlags) -> KeyCombination{
+        if self.addToWithFlag {
+            self.flags = CGEventFlags(rawValue: flags.rawValue | mask.rawValue)
+        } else {
+            self.withoutFlags = CGEventFlags(rawValue: withoutFlags.rawValue | mask.rawValue)
+        }
         return self
     }
     
@@ -45,6 +50,17 @@ class KeyCombination {
     
     var option: KeyCombination {
         get { return self.addMask(.maskAlternate) }
+    }
+    
+    private func setModeExAddition() {
+        self.addToWithFlag = false
+    }
+    
+    var without: KeyCombination {
+        get {
+            self.setModeExAddition()
+            return self
+        }
     }
     
     func toString() -> String {
@@ -100,6 +116,6 @@ class KeyCombination {
         {
             return false
         }
-        return self.flags.rawValue & mapping.withoutModifier.rawValue == 0
+        return mapping.hasAnyModToAvoid(flags)
     }
 }

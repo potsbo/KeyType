@@ -144,6 +144,10 @@ enum Key : UInt16 {
     }
     
     var with: KeyCombination {
-        get { return KeyCombination(self) }
+        get { return alone }
+    }
+    
+    var without: KeyCombination {
+        get { return alone.without }
     }
 }
