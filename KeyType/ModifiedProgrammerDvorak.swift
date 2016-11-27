@@ -20,6 +20,7 @@ class LRDvorak: KeyMapConfiguration {
         self.keyMappingList += dvorakBaseMappings
         self.keyMappingList += numberMappings
         self.keyMappingList += symbolMappings
+        self.keyMappingList += emacsMappings
     }
     
     private let dvorakBase: [Key : Key] = [
@@ -75,6 +76,15 @@ class LRDvorak: KeyMapConfiguration {
                 KeyEventMap(from: KeyCombination(.EQUAL, withModifier: .maskShift), to: KeyCombination(.NUM3, withModifier: .maskShift)),
                 
                 KeyEventMap(from: .BACKQUOTE, to: KeyCombination(.NUM4, withModifier: .maskShift), whenWithout: .maskShift),
+            ]
+        }
+    }
+    
+    private var emacsMappings: [KeyEventMap] {
+        get {
+            return [
+                KeyEventMap(from: .CONTROL_L, to: .ESCAPE, whenWithout: .maskControl),
+                KeyEventMap(from: KeyCombination(.J, withModifier: .maskControl), to: .RETURN)
             ]
         }
     }

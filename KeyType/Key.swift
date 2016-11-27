@@ -62,7 +62,7 @@ enum Key : UInt16 {
     case BACKQUOTE = 50
     case DELETE    = 51
     case ENTER_POWERBOOK = 52
-    case POWER     = 53
+    case ESCAPE    = 53
     case COMMAND_R = 54
     case COMMAND_L = 55
     case SHIFT_L   = 56
