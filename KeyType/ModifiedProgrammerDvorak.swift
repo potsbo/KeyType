@@ -38,9 +38,7 @@ class LRDvorak: KeyMapConfiguration {
     ]
     
     private var dvorakBaseMappings: [[KeyCombination]] {
-        get {
-            return self.dvorakBase.map { [$0.without.ctrl.option.command, $1.alone] }
-        }
+        get { return self.dvorakBase.map { [$0.without.ctrl.option.command, $1.alone] } }
     }
     
     private let numbers: [Key : Key] = [

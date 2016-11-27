@@ -9,16 +9,6 @@
 import Cocoa
 
 class KeyMapConfiguration {
-    private let defaultExclusion : [CGEventFlags] = [.maskCommand, .maskControl, .maskAlternate]
-    let defaultMask: CGEventFlags
-    init() {
-        var eventMask: UInt64 = 0
-        for mask in self.defaultExclusion.map({ $0.rawValue }) {
-            eventMask |= mask
-        }
-        self.defaultMask = KeyMapConfiguration.mergeMask(defaultExclusion)
-    }
-
     static func mergeMask(_ masks: [CGEventFlags]) -> CGEventFlags {
         var eventMask: UInt64 = 0
         for mask in masks.map({ $0.rawValue }) {
