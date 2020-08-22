@@ -7,6 +7,10 @@ OS   := sierra
 build:
 	@xcodebuild -project KeyType.xcodeproj -target KeyType -configuration Release build
 
+.PHONY: test
+test:
+	@xcodebuild -project KeyType.xcodeproj -target KeyType -configuration Release test
+
 .PHONY: dist
 dist:
 	@cd build/Release \
