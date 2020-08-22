@@ -11,7 +11,7 @@ import Cocoa
 class KeyEventWatcher {
     private var keyCode: CGKeyCode?
     private let bundleId = Bundle.main.infoDictionary?["CFBundleIdentifier"] as? String
-    private let config = LRDvorak()
+    private let config = DefaultConfiguration()
 
     private var eventMaskToWatch: CGEventMask {
         let eventTypeList: [CGEventType] = [
