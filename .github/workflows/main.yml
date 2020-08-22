@@ -16,5 +16,7 @@ jobs:
       run: xcodebuild -version
     - name: Build
       run: make build
+    - name: Test
+      run: make test
     - name: Dist
       run: make dist
