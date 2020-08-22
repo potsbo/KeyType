@@ -28,8 +28,8 @@ class KeyEventWatcher {
                 .scrollWheel
             ]
             
-            let maskBits = eventTypeList.map { $0.rawValue }.map { 1 << $0 }
-            let maskBit  = maskBits.reduce(UInt32(0), | )
+            let maskBits = eventTypeList.map { $0.rawValue }.map { UInt32(1 << $0) }
+            let maskBit  = maskBits.reduce(UInt32(0), { UInt32($0 | $1) } )
             return CGEventMask(maskBit)
         }
     }
