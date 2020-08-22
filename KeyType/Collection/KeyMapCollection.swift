@@ -9,11 +9,3 @@
 import Foundation
 
 typealias KeyMapCollection = [KeyEventMap]
-extension KeyMapCollection {
-    static func kanaEisu() -> KeyMapCollection {
-        return [
-            KeyEventMap(Key.commandL.without.command, to: Key.EISU.alone),
-            KeyEventMap(Key.commandR.without.command, to: Key.KANA.alone),
-        ]
-    }
-}

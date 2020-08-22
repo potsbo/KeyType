@@ -22,7 +22,7 @@ class LRDvorak: KeyMapConfiguration {
         maps += symbolMappings
         maps += emacsMappings
 
-        keyMappingList = maps.map { KeyEventMap($0[0], to: $0[1]) } + KeyMapCollection.kanaEisu()
+        keyMappingList = maps.map { KeyEventMap($0[0], to: $0[1]) } + KanaEisu
     }
 
     private var dvorakBaseMappings: [[KeyCombination]] {
