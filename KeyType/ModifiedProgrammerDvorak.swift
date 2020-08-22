@@ -34,11 +34,7 @@ class DefaultConfiguration {
         needsRehashing = false
     }
 
-    init() {
-        setMappingList()
-    }
-
-    private func setMappingList() {
-        keyMappingList = LRDvorak + KanaEisu + Emacs
+    init(_ keyMappingList: KeyMapCollection) {
+        self.keyMappingList = keyMappingList
     }
 }
