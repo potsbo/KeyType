@@ -65,14 +65,14 @@ enum Key: UInt16 {
     case ESCAPE = 53
     case commandR = 54
     case commandL = 55
-    case SHIFT_L = 56
-    case CAPSLOCK = 57
-    case OPTION_L = 58
-    case CONTROL_L = 59
-    case SHIFT_R = 60
-    case OPTION_R = 61
-    case CONTROL_R = 62
-    case FN = 63
+    case shiftL = 56
+    case capslock = 57
+    case optionL = 58
+    case ctrlL = 59
+    case shiftR = 60
+    case optionR = 61
+    case ctrlR = 62
+    case fn = 63
     case F17 = 64
     case KEYPAD_DOT = 65
     case KEYPAD_MULTIPLY = 67
@@ -140,7 +140,7 @@ enum Key: UInt16 {
     }
 
     static var modifiers: [Key] {
-        return [.commandL, .commandR, .SHIFT_L, .SHIFT_R, .CONTROL_L, .CONTROL_R, .OPTION_L, .OPTION_R, .FN, .CAPSLOCK]
+        return [.commandL, .commandR, .shiftL, .shiftR, .ctrlL, .ctrlR, .optionL, .optionR, .fn, .capslock]
     }
 
     var alone: KeyCombination {

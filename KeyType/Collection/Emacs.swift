@@ -9,7 +9,7 @@
 import Foundation
 
 let Emacs = [
-    [Key.CONTROL_L.without.ctrl, Key.ESCAPE.alone],
+    [Key.ctrlL.without.ctrl, Key.ESCAPE.alone],
     [Key.J.with.ctrl, Key.RETURN.alone],
     [Key.M.with.ctrl, Key.RETURN.alone],
     [Key.F.with.ctrl, Key.RIGHT_ARROW.alone],
