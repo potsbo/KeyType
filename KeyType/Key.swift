@@ -8,7 +8,7 @@
 
 import Cocoa
 
-enum Key : UInt16 {
+enum Key: UInt16 {
     case A = 0
     case S = 1
     case D = 2
@@ -134,27 +134,27 @@ enum Key : UInt16 {
     case BRIGHTNESS_UP       = 144
     case BRIGHTNESS_DOWN     = 145
     case EXPOSE_ALL          = 160
-    
+
     static var numbers: [Key] {
         get {
         return [.NUM1, .NUM2, .NUM3, .NUM4, .NUM5, .NUM6, .NUM7, .NUM8, .NUM9, .NUM0]
         }
     }
-    
+
     static var modifiers: [Key] {
         get {
             return [.COMMAND_L, .COMMAND_R, .SHIFT_L, .SHIFT_R, .CONTROL_L, .CONTROL_R, .OPTION_L, .OPTION_R, .FN, .CAPSLOCK]
         }
     }
-    
+
     var alone: KeyCombination {
         get { return KeyCombination(self) }
     }
-    
+
     var with: KeyCombination {
         get { return alone }
     }
-    
+
     var without: KeyCombination {
         get { return alone.without }
     }
