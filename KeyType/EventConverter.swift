@@ -9,39 +9,28 @@
 import Foundation
 
 class EventConverter {
-    var keyMappingList: [Remap] = []
+    private var remapList: [CGKeyCode: [Remap]]
 
-    private var mapList: [CGKeyCode: [Remap]] {
-        if needsRehashing { rehash() }
-        return storedList
-    }
-
-    private var storedList: [CGKeyCode: [Remap]] = [:]
-    private var needsRehashing = true
-
-    private func rehash() {
-        storedList = [:]
+    init(_ keyMappingList: KeyMapCollection) {
+        var remapList: [CGKeyCode: [Remap]] = [:]
 
         for val in keyMappingList {
             let key = val.input.keyCode
 
-            if storedList[key] == nil {
-                storedList[key] = []
+            if remapList[key] == nil {
+                remapList[key] = []
             }
 
-            storedList[key]?.append(val)
+            remapList[key]?.append(val)
         }
-        needsRehashing = false
-    }
 
-    init(_ keyMappingList: KeyMapCollection) {
-        self.keyMappingList = keyMappingList
+        self.remapList = remapList
     }
 
     func getConvertedEvent(_ event: CGEvent, keyCode: CGKeyCode? = nil) -> CGEvent? {
         let eventKeyCombination = KeyCombination(fromEvent: event)
 
-        guard let candidateMaps = mapList[keyCode ?? eventKeyCombination.keyCode] else {
+        guard let candidateMaps = remapList[keyCode ?? eventKeyCombination.keyCode] else {
             return nil
         }
 
