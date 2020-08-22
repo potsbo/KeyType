@@ -13,6 +13,7 @@ class KeyCombinationTests: XCTestCase {
     func testLeftCommandToEisu() {
         XCTAssert(convert(KanaEisu, key: Key.commandL)?.keyCode == Key.EISU.rawValue)
     }
+
     func testRightCommandToKana() {
         XCTAssert(convert(KanaEisu, key: Key.commandR)?.keyCode == Key.KANA.rawValue)
     }
