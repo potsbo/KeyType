@@ -214,18 +214,18 @@
 				TargetAttributes = {
 					87EC00AE1DE88D3D007C1F66 = {
 						CreatedOnToolsVersion = 8.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1160;
 						ProvisioningStyle = Automatic;
 					};
 					87EC00BF1DE88D3D007C1F66 = {
 						CreatedOnToolsVersion = 8.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1160;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 87EC00AE1DE88D3D007C1F66;
 					};
 					87EC00CA1DE88D3D007C1F66 = {
 						CreatedOnToolsVersion = 8.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1160;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 87EC00AE1DE88D3D007C1F66;
 					};
@@ -236,6 +236,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -457,7 +458,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.potsbo.KeyType;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -472,7 +473,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.potsbo.KeyType;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -487,7 +488,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.potsbo.KeyTypeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeyType.app/Contents/MacOS/KeyType";
 			};
 			name = Debug;
@@ -503,7 +504,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.potsbo.KeyTypeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeyType.app/Contents/MacOS/KeyType";
 			};
 			name = Release;
@@ -518,7 +519,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.potsbo.KeyTypeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = KeyType;
 			};
 			name = Debug;
@@ -533,7 +534,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.potsbo.KeyTypeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = KeyType;
 			};
 			name = Release;
