@@ -15,7 +15,7 @@ class KeyCombination {
     private var addToWithFlag = true
 
     var withoutModifier: CGEventFlags {
-        get { return withoutFlags }
+        return withoutFlags
     }
 
     init(fromEvent: CGEvent) {
@@ -37,19 +37,19 @@ class KeyCombination {
     }
 
     var shift: KeyCombination {
-        get { return self.addMask(.maskShift) }
+        return self.addMask(.maskShift)
     }
 
     var ctrl: KeyCombination {
-        get { return self.addMask(.maskControl) }
+        return self.addMask(.maskControl)
     }
 
     var command: KeyCombination {
-        get { return self.addMask(.maskCommand) }
+        return self.addMask(.maskCommand)
     }
 
     var option: KeyCombination {
-        get { return self.addMask(.maskAlternate) }
+        return self.addMask(.maskAlternate)
     }
 
     private func setModeExAddition() {
@@ -57,31 +57,24 @@ class KeyCombination {
     }
 
     var without: KeyCombination {
-        get {
-            self.setModeExAddition()
-            return self
-        }
+        self.setModeExAddition()
+        return self
     }
 
     var label: String {
-        get {
-            guard let key = Key(rawValue: keyCode) else { return flagString }
-            return flagString + String(describing: key)
-        }
+        guard let key = Key(rawValue: keyCode) else { return flagString }
+        return flagString + String(describing: key)
     }
 
     private var flagString: String {
-        get {
-            var flagString = ""
-            if has(modifier: .maskSecondaryFn) { flagString += "(fn)" }
-            if has(modifier: .maskAlphaShift) { flagString += "⇪" }
-            if has(modifier: .maskCommand) { flagString += "⌘" }
-            if has(modifier: .maskShift) { flagString += "⇧" }
-            if has(modifier: .maskControl) { flagString += "⌃" }
-            if has(modifier: .maskAlternate) { flagString += "⌥" }
-            return flagString
-        }
-
+        var flagString = ""
+        if has(modifier: .maskSecondaryFn) { flagString += "(fn)" }
+        if has(modifier: .maskAlphaShift) { flagString += "⇪" }
+        if has(modifier: .maskCommand) { flagString += "⌘" }
+        if has(modifier: .maskShift) { flagString += "⇧" }
+        if has(modifier: .maskControl) { flagString += "⌃" }
+        if has(modifier: .maskAlternate) { flagString += "⌥" }
+        return flagString
     }
 
     private func has(modifier key: CGEventFlags ) -> Bool {

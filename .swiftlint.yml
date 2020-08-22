@@ -1,2 +1,5 @@
 line_length:
-  warning: 140
+  warning: 140 # TODO: Remove this config
+
+disabled_rules:
+- identifier_name # TODO: Remove this config

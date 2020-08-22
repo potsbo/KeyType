@@ -11,12 +11,12 @@ import Cocoa
 class KeyEventMap: NSObject {
     let input: KeyCombination
     private let output: KeyCombination
-    var outputValue: Int64 { get { return Int64(outputKeyCode) } }
-    var outputKeyCode: CGKeyCode { get { return output.keyCode } }
+    var outputValue: Int64 { return Int64(outputKeyCode) }
+    var outputKeyCode: CGKeyCode { return output.keyCode }
 
-    init(_ from: KeyCombination, to: KeyCombination) {
+    init(_ from: KeyCombination, to output: KeyCombination) {
         self.input  = from
-        self.output = to
+        self.output = output
     }
 
     func renderEventFlagFor(event: CGEvent) -> CGEventFlags {

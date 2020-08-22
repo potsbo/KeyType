@@ -18,9 +18,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.highlightMode = true
         statusItem.menu = menu
 
-        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
 
-        menu.addItem(withTitle: "About KeyType \(version)", action: nil, keyEquivalent: "")
+        menu.addItem(withTitle: "About KeyType \(String(describing: version))", action: nil, keyEquivalent: "")
         menu.addItem(withTitle: "Quit", action: #selector(AppDelegate.quit(_:)), keyEquivalent: "")
         _ = KeyEventController()
     }
