@@ -17,6 +17,4 @@ jobs:
     - name: Run SwiftFormat
       run: swiftformat .
     - name: Detect diff
-      run: git diff
-
-
+      run: git diff --exit-code
