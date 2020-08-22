@@ -12,11 +12,13 @@ jobs:
       uses: maxim-lobanov/setup-xcode@1.0
       with:
         xcode-version: 11.6
+    - name: Install xcpretty
+      run: gem install xcpretty
     - name: Show Xcode version
       run: xcodebuild -version
     - name: Build
-      run: make build
+      run: make build | xcpretty
     - name: Test
-      run: make test
+      run: make test | xcpretty
     - name: Dist
       run: make dist
