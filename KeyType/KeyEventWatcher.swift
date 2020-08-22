@@ -10,11 +10,10 @@ import Cocoa
 
 class KeyEventWatcher {
     private var keyCode: CGKeyCode?
-    private let bundleId = Bundle.main.infoDictionary?["CFBundleIdentifier"] as! String
+    private let bundleId = Bundle.main.infoDictionary?["CFBundleIdentifier"] as? String
     private let config = LRDvorak()
 
     private var eventMaskToWatch: CGEventMask {
-        get {
             let eventTypeList: [CGEventType] = [
                 .keyDown,
                 .keyUp,
@@ -31,7 +30,6 @@ class KeyEventWatcher {
             let maskBits = eventTypeList.map { $0.rawValue }.map { UInt32(1 << $0) }
             let maskBit  = maskBits.reduce(UInt32(0), { UInt32($0 | $1) })
             return CGEventMask(maskBit)
-        }
     }
 
     func startWatching() {

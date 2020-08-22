@@ -17,10 +17,8 @@ class KeyMapConfiguration {
     ]
 
     var mapList: [CGKeyCode: [KeyEventMap]] {
-        get {
             if needsRehashing { rehash() }
             return storedList
-        }
     }
 
     private var storedList: [CGKeyCode: [KeyEventMap]] = [:]
