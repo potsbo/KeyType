@@ -1,0 +1,20 @@
+name: SwiftFormat
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: setup-xcode
+      uses: maxim-lobanov/setup-xcode@1.0
+      with:
+        xcode-version: 11.6
+    - name: Install swiftformat
+      run: brew install swiftformat
+    - name: Run SwiftFormat
+      run: swiftformat .
+    - name: Detect diff
+      run: git diff --exit-code

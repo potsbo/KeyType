@@ -40,5 +40,5 @@ let modifierMasks: [CGKeyCode: CGEventFlags] = [
     58: CGEventFlags.maskAlternate,
     61: CGEventFlags.maskAlternate,
     63: CGEventFlags.maskSecondaryFn,
-    57: CGEventFlags.maskAlphaShift
+    57: CGEventFlags.maskAlphaShift,
 ]

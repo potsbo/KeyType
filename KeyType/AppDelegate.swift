@@ -12,7 +12,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
 
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
+    func applicationDidFinishLaunching(_: Notification) {
         let menu = NSMenu()
         statusItem.title = "⌘"
         statusItem.highlightMode = true
@@ -25,11 +25,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         _ = KeyEventController()
     }
 
-    func applicationWillTerminate(_ aNotification: Notification) {
+    func applicationWillTerminate(_: Notification) {
         // Insert code here to tear down your application
     }
 
-    @IBAction func quit(_ sender: NSButton) {
+    @IBAction func quit(_: NSButton) {
         NSApplication.shared.terminate(self)
     }
 }

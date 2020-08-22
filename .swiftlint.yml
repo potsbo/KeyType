@@ -1,5 +1,8 @@
 line_length:
   warning: 140 # TODO: Remove this config
 
+trailing_comma:
+  mandatory_comma: true # Compatibility with SwiftFormat
+
 disabled_rules:
 - identifier_name # TODO: Remove this config

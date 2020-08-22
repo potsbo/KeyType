@@ -23,7 +23,7 @@ class LRDvorak: KeyMapConfiguration {
         maps += symbolMappings
         maps += emacsMappings
 
-        self.keyMappingList = maps.map { KeyEventMap($0[0], to: $0[1]) }
+        keyMappingList = maps.map { KeyEventMap($0[0], to: $0[1]) }
     }
 
     private var dvorakBaseMappings: [[KeyCombination]] {
@@ -35,7 +35,7 @@ class LRDvorak: KeyMapConfiguration {
             .H: .D, .J: .H, .K: .T, .L: .N, .SEMICOLON: .S,
 
             .Z: .SEMICOLON, .X: .Q, .C: .J, .V: .K, .B: .X,
-            .N: .B, .M: .M, .COMMA: .W, .PERIOD: .V, .SLASH: .Z
+            .N: .B, .M: .M, .COMMA: .W, .PERIOD: .V, .SLASH: .Z,
         ]
 
         return dvorakBase.map { [$0.without.ctrl.option.command, $1.alone] }
@@ -44,15 +44,15 @@ class LRDvorak: KeyMapConfiguration {
     private var numberMappings: [[KeyCombination]] {
         let numbersShifted: [Key: Key] = [
             .NUM1: .NUM1, .NUM3: .SQUARE_BRA, .NUM4: .NUM9,
-            .NUM6: .EQUAL, .NUM7: .NUM0, .NUM8: .SQUARE_KET, .NUM0: .NUM8
+            .NUM6: .EQUAL, .NUM7: .NUM0, .NUM8: .SQUARE_KET, .NUM0: .NUM8,
         ]
         let numbersNotShifted: [Key: Key] = [
-            .NUM2: .SQUARE_BRA, .NUM5: .EQUAL, .NUM9: .SQUARE_KET
+            .NUM2: .SQUARE_BRA, .NUM5: .EQUAL, .NUM9: .SQUARE_KET,
         ]
 
         let addShift = numbersShifted.map { [$0.without.shift, $1.with.shift] }
-        let noShift  = numbersNotShifted.map { [$0.without.shift, $1.alone] }
-        let shifts   = Key.numbers.map { [$0.with.shift.without.ctrl.option.command, $0.alone] }
+        let noShift = numbersNotShifted.map { [$0.without.shift, $1.alone] }
+        let shifts = Key.numbers.map { [$0.with.shift.without.ctrl.option.command, $0.alone] }
         return noShift + addShift + shifts
     }
 
@@ -70,7 +70,7 @@ class LRDvorak: KeyMapConfiguration {
             [Key.EQUAL.without.shift, Key.BACKQUOTE.alone],
             [Key.EQUAL.with.shift, Key.NUM3.with.shift],
 
-            [Key.BACKQUOTE.without.shift, Key.NUM4.with.shift]
+            [Key.BACKQUOTE.without.shift, Key.NUM4.with.shift],
         ]
     }
 
@@ -82,7 +82,7 @@ class LRDvorak: KeyMapConfiguration {
             [Key.B.with.ctrl, Key.LEFT_ARROW.alone],
             [Key.N.with.ctrl, Key.DOWN_ARROW.alone],
             [Key.P.with.ctrl, Key.UP_ARROW.alone],
-            [Key.H.with.ctrl, Key.DELETE.alone]
+            [Key.H.with.ctrl, Key.DELETE.alone],
         ]
     }
 }

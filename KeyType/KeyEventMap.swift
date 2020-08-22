@@ -15,7 +15,7 @@ class KeyEventMap: NSObject {
     var outputKeyCode: CGKeyCode { return output.keyCode }
 
     init(_ from: KeyCombination, to output: KeyCombination) {
-        self.input  = from
+        input = from
         self.output = output
     }
 
@@ -25,6 +25,6 @@ class KeyEventMap: NSObject {
     }
 
     func hasAnyModToAvoid(_ flags: CGEventFlags) -> Bool {
-        return flags.rawValue & self.input.withoutModifier.rawValue == 0
+        return flags.rawValue & input.withoutModifier.rawValue == 0
     }
 }

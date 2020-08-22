@@ -13,12 +13,12 @@ class KeyMapConfiguration {
 
     let kanaEisuMappings = [
         [Key.COMMAND_L.without.command, Key.EISU.alone],
-        [Key.COMMAND_R.without.command, Key.KANA.alone]
+        [Key.COMMAND_R.without.command, Key.KANA.alone],
     ]
 
     var mapList: [CGKeyCode: [KeyEventMap]] {
-            if needsRehashing { rehash() }
-            return storedList
+        if needsRehashing { rehash() }
+        return storedList
     }
 
     private var storedList: [CGKeyCode: [KeyEventMap]] = [:]
@@ -27,7 +27,7 @@ class KeyMapConfiguration {
     private func rehash() {
         storedList = [:]
 
-        for val in self.keyMappingList {
+        for val in keyMappingList {
             let key = val.input.keyCode
 
             if storedList[key] == nil {
@@ -38,5 +38,4 @@ class KeyMapConfiguration {
         }
         needsRehashing = false
     }
-
 }
