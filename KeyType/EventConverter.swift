@@ -24,7 +24,7 @@ class EventConverter {
             remapList[key]?.append(val)
         }
 
-        self.remapMap = remapList
+        remapMap = remapList
     }
 
     func getConvertedEvent(_ event: CGEvent) -> CGEvent? {
