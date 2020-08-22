@@ -12,7 +12,7 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    let statusItem = NSStatusBar.system().statusItem(withLength: CGFloat(NSVariableStatusItemLength))
+    let statusItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         let menu = NSMenu()
@@ -32,6 +32,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func quit(_ sender: NSButton) {
-        NSApplication.shared().terminate(self)
+        NSApplication.shared.terminate(self)
     }
 }
