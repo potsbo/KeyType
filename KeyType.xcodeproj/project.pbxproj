@@ -15,6 +15,7 @@
 		870105A21DEA08AA00486507 /* CGEventExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870105A11DEA08AA00486507 /* CGEventExtension.swift */; };
 		870105A41DEA0B5500486507 /* KeyMapConfigration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870105A31DEA0B5500486507 /* KeyMapConfigration.swift */; };
 		87DADDD024F15A4900D79B36 /* KeyCombinationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DADDCF24F15A4900D79B36 /* KeyCombinationTests.swift */; };
+		87DADDD424F16BDD00D79B36 /* KeyMapCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DADDD324F16BDD00D79B36 /* KeyMapCollection.swift */; };
 		87EC00B31DE88D3D007C1F66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EC00B21DE88D3D007C1F66 /* AppDelegate.swift */; };
 		87EC00B51DE88D3D007C1F66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EC00B41DE88D3D007C1F66 /* ViewController.swift */; };
 		87EC00B71DE88D3D007C1F66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87EC00B61DE88D3D007C1F66 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		870105A11DEA08AA00486507 /* CGEventExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGEventExtension.swift; sourceTree = "<group>"; };
 		870105A31DEA0B5500486507 /* KeyMapConfigration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyMapConfigration.swift; sourceTree = "<group>"; };
 		87DADDCF24F15A4900D79B36 /* KeyCombinationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCombinationTests.swift; sourceTree = "<group>"; };
+		87DADDD324F16BDD00D79B36 /* KeyMapCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMapCollection.swift; sourceTree = "<group>"; };
 		87EC00AF1DE88D3D007C1F66 /* KeyType.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyType.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87EC00B21DE88D3D007C1F66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87EC00B41DE88D3D007C1F66 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				87EC00B61DE88D3D007C1F66 /* Assets.xcassets */,
 				87EC00B81DE88D3D007C1F66 /* Main.storyboard */,
 				87EC00BB1DE88D3D007C1F66 /* Info.plist */,
+				87DADDD324F16BDD00D79B36 /* KeyMapCollection.swift */,
 			);
 			path = KeyType;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				870105961DE968CF00486507 /* KeyEventMap.swift in Sources */,
 				87EC00B31DE88D3D007C1F66 /* AppDelegate.swift in Sources */,
 				87EC00DE1DE89151007C1F66 /* KeyEventWatcher.swift in Sources */,
+				87DADDD424F16BDD00D79B36 /* KeyMapCollection.swift in Sources */,
 				870105981DE979DC00486507 /* Key.swift in Sources */,
 				870105A21DEA08AA00486507 /* CGEventExtension.swift in Sources */,
 				870105A01DEA07E700486507 /* KeyCombination.swift in Sources */,

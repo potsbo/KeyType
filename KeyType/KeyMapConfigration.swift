@@ -11,11 +11,6 @@ import Cocoa
 class KeyMapConfiguration {
     var keyMappingList: [KeyEventMap] = []
 
-    let kanaEisuMappings = [
-        [Key.commandL.without.command, Key.EISU.alone],
-        [Key.commandR.without.command, Key.KANA.alone],
-    ]
-
     var mapList: [CGKeyCode: [KeyEventMap]] {
         if needsRehashing { rehash() }
         return storedList

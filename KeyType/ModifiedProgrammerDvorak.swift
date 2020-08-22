@@ -17,13 +17,12 @@ class LRDvorak: KeyMapConfiguration {
     private func setMappingList() {
         var maps: [[KeyCombination]] = []
         maps = []
-        maps += kanaEisuMappings
         maps += dvorakBaseMappings
         maps += numberMappings
         maps += symbolMappings
         maps += emacsMappings
 
-        keyMappingList = maps.map { KeyEventMap($0[0], to: $0[1]) }
+        keyMappingList = maps.map { KeyEventMap($0[0], to: $0[1]) } + KeyMapCollection.kanaEisu()
     }
 
     private var dvorakBaseMappings: [[KeyCombination]] {
