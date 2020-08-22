@@ -17,14 +17,14 @@ extension CGEvent {
             setIntegerValueField(.keyboardEventKeycode, value: Int64(newValue))
         }
     }
-    
+
     func isModiferKeyDownEvent() -> Bool {
         guard let flag = modifierMasks[keyCode] else {
             return false
         }
         return flags.contains(flag) && isModiferKeyEvent()
     }
-    
+
     func isModiferKeyEvent() -> Bool {
         return modifierMasks[keyCode] != nil
     }
