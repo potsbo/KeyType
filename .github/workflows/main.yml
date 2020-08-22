@@ -11,7 +11,7 @@ jobs:
     - name: setup-xcode
       uses: maxim-lobanov/setup-xcode@1.0
       with:
-        xcode-version: 8.3
+        xcode-version: 11.6
     - name: Show Xcode version
       run: xcodebuild -version
     - name: Build
