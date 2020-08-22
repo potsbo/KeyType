@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if which swiftlint >/dev/null; then
+	echo "ok: swiftlint installed"
+else
+	brew install swiftlint # TODO: use a package manager
+fi
+
+if which swiftformat >/dev/null; then
+	echo "ok: swiftformat installed"
+else
+	brew install swiftformat # TODO: use a package manager
+fi
