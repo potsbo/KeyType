@@ -12,5 +12,11 @@ jobs:
       uses: maxim-lobanov/setup-xcode@1.0
       with:
         xcode-version: 11.6
-    - name: Install mint
+    - name: Install swiftformat
       run: brew install swiftformat
+    - name: Run SwiftFormat
+      run: swiftformat .
+    - name: Detect diff
+      run: git diff
+
+
