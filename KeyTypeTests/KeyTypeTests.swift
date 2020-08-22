@@ -6,11 +6,10 @@
 //  Copyright © 2016 Shimpei Otsubo. All rights reserved.
 //
 
-import XCTest
 @testable import KeyType
+import XCTest
 
 class KeyTypeTests: XCTestCase {
-
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -28,9 +27,8 @@ class KeyTypeTests: XCTestCase {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measure {
+        measure {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

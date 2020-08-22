@@ -9,7 +9,6 @@
 import Foundation
 
 class KeyEventController {
-
     private let watcher = KeyEventWatcher()
 
     init() {
@@ -17,9 +16,9 @@ class KeyEventController {
         let options: CFDictionary = [checkOptionPrompt: true] as NSDictionary
 
         if !AXIsProcessTrustedWithOptions(options) {
-            self.waitUntillTrusted()
+            waitUntillTrusted()
         } else {
-            self.watcher.startWatching()
+            watcher.startWatching()
         }
     }
 

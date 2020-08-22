@@ -10,8 +10,8 @@ import Cocoa
 
 class KeyCombination {
     let keyCode: CGKeyCode
-    var flags         = CGEventFlags()
-    private var withoutFlags  = CGEventFlags()
+    var flags = CGEventFlags()
+    private var withoutFlags = CGEventFlags()
     private var addToWithFlag = true
 
     var withoutModifier: CGEventFlags {
@@ -19,45 +19,45 @@ class KeyCombination {
     }
 
     init(fromEvent: CGEvent) {
-        self.keyCode = fromEvent.keyCode
-        self.flags   = fromEvent.flags
+        keyCode = fromEvent.keyCode
+        flags = fromEvent.flags
     }
 
     init(_ key: Key) {
-        self.keyCode = key.rawValue
+        keyCode = key.rawValue
     }
 
     private func addMask(_ mask: CGEventFlags) -> KeyCombination {
-        if self.addToWithFlag {
-            self.flags.insert(mask)
+        if addToWithFlag {
+            flags.insert(mask)
         } else {
-            self.withoutFlags.insert(mask)
+            withoutFlags.insert(mask)
         }
         return self
     }
 
     var shift: KeyCombination {
-        return self.addMask(.maskShift)
+        return addMask(.maskShift)
     }
 
     var ctrl: KeyCombination {
-        return self.addMask(.maskControl)
+        return addMask(.maskControl)
     }
 
     var command: KeyCombination {
-        return self.addMask(.maskCommand)
+        return addMask(.maskCommand)
     }
 
     var option: KeyCombination {
-        return self.addMask(.maskAlternate)
+        return addMask(.maskAlternate)
     }
 
     private func setModeExAddition() {
-        self.addToWithFlag = false
+        addToWithFlag = false
     }
 
     var without: KeyCombination {
-        self.setModeExAddition()
+        setModeExAddition()
         return self
     }
 
@@ -77,18 +77,18 @@ class KeyCombination {
         return flagString
     }
 
-    private func has(modifier key: CGEventFlags ) -> Bool {
-        return self.flags.contains(key)
+    private func has(modifier key: CGEventFlags) -> Bool {
+        return flags.contains(key)
     }
 
     func postEvent() {
         let loc = CGEventTapLocation.cghidEventTap
 
         let keyDownEvent = CGEvent(keyboardEventSource: nil, virtualKey: keyCode, keyDown: true)!
-        let keyUpEvent   = CGEvent(keyboardEventSource: nil, virtualKey: keyCode, keyDown: false)!
+        let keyUpEvent = CGEvent(keyboardEventSource: nil, virtualKey: keyCode, keyDown: false)!
 
         keyDownEvent.flags = flags
-        keyUpEvent.flags   = CGEventFlags()
+        keyUpEvent.flags = CGEventFlags()
 
         keyDownEvent.post(tap: loc)
         keyUpEvent.post(tap: loc)
@@ -96,12 +96,13 @@ class KeyCombination {
 
     func isCompatibleWith(_ mapping: KeyEventMap) -> Bool {
         let cmb = mapping.input
-        if  cmb.has(modifier: .maskCommand)     && !self.has(modifier: .maskCommand)     ||
-            cmb.has(modifier: .maskShift)       && !self.has(modifier: .maskShift)       ||
-            cmb.has(modifier: .maskControl)     && !self.has(modifier: .maskControl)     ||
-            cmb.has(modifier: .maskAlternate)   && !self.has(modifier: .maskAlternate)   ||
-            cmb.has(modifier: .maskSecondaryFn) && !self.has(modifier: .maskSecondaryFn) ||
-            cmb.has(modifier: .maskAlphaShift)  && !self.has(modifier: .maskAlphaShift) {
+        if cmb.has(modifier: .maskCommand) && !has(modifier: .maskCommand) ||
+            cmb.has(modifier: .maskShift) && !has(modifier: .maskShift) ||
+            cmb.has(modifier: .maskControl) && !has(modifier: .maskControl) ||
+            cmb.has(modifier: .maskAlternate) && !has(modifier: .maskAlternate) ||
+            cmb.has(modifier: .maskSecondaryFn) && !has(modifier: .maskSecondaryFn) ||
+            cmb.has(modifier: .maskAlphaShift) && !has(modifier: .maskAlphaShift)
+        {
             return false
         }
         return mapping.hasAnyModToAvoid(flags)
