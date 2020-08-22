@@ -9,14 +9,14 @@
 import Foundation
 
 class EventConverter {
-    var keyMappingList: [KeyEventMap] = []
+    var keyMappingList: [Remap] = []
 
-    private var mapList: [CGKeyCode: [KeyEventMap]] {
+    private var mapList: [CGKeyCode: [Remap]] {
         if needsRehashing { rehash() }
         return storedList
     }
 
-    private var storedList: [CGKeyCode: [KeyEventMap]] = [:]
+    private var storedList: [CGKeyCode: [Remap]] = [:]
     private var needsRehashing = true
 
     private func rehash() {

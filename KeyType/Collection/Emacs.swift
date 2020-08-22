@@ -17,4 +17,4 @@ let Emacs = [
     [Key.N.with.ctrl, Key.DOWN_ARROW.alone],
     [Key.P.with.ctrl, Key.UP_ARROW.alone],
     [Key.H.with.ctrl, Key.DELETE.alone],
-].map { KeyEventMap($0[0], to: $0[1]) }
+].map { Remap($0[0], to: $0[1]) }

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class KeyEventMap: NSObject {
+class Remap: NSObject {
     let input: KeyCombination
     private let output: KeyCombination
     var outputValue: Int64 { return Int64(outputKeyCode) }
