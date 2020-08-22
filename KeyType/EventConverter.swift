@@ -27,10 +27,10 @@ class EventConverter {
         self.remapList = remapList
     }
 
-    func getConvertedEvent(_ event: CGEvent, keyCode: CGKeyCode? = nil) -> CGEvent? {
+    func getConvertedEvent(_ event: CGEvent) -> CGEvent? {
         let eventKeyCombination = KeyCombination(fromEvent: event)
 
-        guard let candidateMaps = remapList[keyCode ?? eventKeyCombination.keyCode] else {
+        guard let candidateMaps = remapList[eventKeyCombination.keyCode] else {
             return nil
         }
 
