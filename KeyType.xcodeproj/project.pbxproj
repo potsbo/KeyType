@@ -10,7 +10,7 @@
 		870105941DE9646100486507 /* KeyEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870105931DE9646100486507 /* KeyEventController.swift */; };
 		870105961DE968CF00486507 /* KeyEventMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870105951DE968CF00486507 /* KeyEventMap.swift */; };
 		870105981DE979DC00486507 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870105971DE979DC00486507 /* Key.swift */; };
-		8701059A1DE97ADB00486507 /* ModifiedProgrammerDvorak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870105991DE97ADB00486507 /* ModifiedProgrammerDvorak.swift */; };
+		8701059A1DE97ADB00486507 /* EventConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870105991DE97ADB00486507 /* EventConverter.swift */; };
 		870105A01DEA07E700486507 /* KeyCombination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8701059F1DEA07E700486507 /* KeyCombination.swift */; };
 		870105A21DEA08AA00486507 /* CGEventExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870105A11DEA08AA00486507 /* CGEventExtension.swift */; };
 		87DADDD024F15A4900D79B36 /* KeyCombinationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DADDCF24F15A4900D79B36 /* KeyCombinationTests.swift */; };
@@ -48,7 +48,7 @@
 		870105931DE9646100486507 /* KeyEventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyEventController.swift; sourceTree = "<group>"; };
 		870105951DE968CF00486507 /* KeyEventMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyEventMap.swift; sourceTree = "<group>"; };
 		870105971DE979DC00486507 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
-		870105991DE97ADB00486507 /* ModifiedProgrammerDvorak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifiedProgrammerDvorak.swift; sourceTree = "<group>"; };
+		870105991DE97ADB00486507 /* EventConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventConverter.swift; sourceTree = "<group>"; };
 		8701059F1DEA07E700486507 /* KeyCombination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCombination.swift; sourceTree = "<group>"; };
 		870105A11DEA08AA00486507 /* CGEventExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGEventExtension.swift; sourceTree = "<group>"; };
 		87DADDCF24F15A4900D79B36 /* KeyCombinationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCombinationTests.swift; sourceTree = "<group>"; };
@@ -146,7 +146,7 @@
 				87EC00B41DE88D3D007C1F66 /* ViewController.swift */,
 				87EC00DD1DE89151007C1F66 /* KeyEventWatcher.swift */,
 				870105931DE9646100486507 /* KeyEventController.swift */,
-				870105991DE97ADB00486507 /* ModifiedProgrammerDvorak.swift */,
+				870105991DE97ADB00486507 /* EventConverter.swift */,
 				870105A11DEA08AA00486507 /* CGEventExtension.swift */,
 				87EC00B61DE88D3D007C1F66 /* Assets.xcassets */,
 				87EC00B81DE88D3D007C1F66 /* Main.storyboard */,
@@ -332,7 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87EC00B51DE88D3D007C1F66 /* ViewController.swift in Sources */,
-				8701059A1DE97ADB00486507 /* ModifiedProgrammerDvorak.swift in Sources */,
+				8701059A1DE97ADB00486507 /* EventConverter.swift in Sources */,
 				87DADDDA24F1874600D79B36 /* LRDvorak.swift in Sources */,
 				870105961DE968CF00486507 /* KeyEventMap.swift in Sources */,
 				87EC00B31DE88D3D007C1F66 /* AppDelegate.swift in Sources */,

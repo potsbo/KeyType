@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DefaultConfiguration {
+class EventConverter {
     var keyMappingList: [KeyEventMap] = []
 
     private var mapList: [CGKeyCode: [KeyEventMap]] {
