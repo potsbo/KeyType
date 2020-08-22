@@ -9,7 +9,7 @@ build:
 
 .PHONY: test
 test:
-	@xcodebuild -project KeyType.xcodeproj -target KeyType -configuration Release test
+	@xcodebuild -project KeyType.xcodeproj -scheme KeyType -configuration Debug test
 
 .PHONY: dist
 dist:
