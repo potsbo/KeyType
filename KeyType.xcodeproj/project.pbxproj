@@ -209,23 +209,23 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "Shimpei Otsubo";
 				TargetAttributes = {
 					87EC00AE1DE88D3D007C1F66 = {
 						CreatedOnToolsVersion = 8.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1160;
 						ProvisioningStyle = Automatic;
 					};
 					87EC00BF1DE88D3D007C1F66 = {
 						CreatedOnToolsVersion = 8.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1160;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 87EC00AE1DE88D3D007C1F66;
 					};
 					87EC00CA1DE88D3D007C1F66 = {
 						CreatedOnToolsVersion = 8.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1160;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 87EC00AE1DE88D3D007C1F66;
 					};
@@ -233,7 +233,7 @@
 			};
 			buildConfigurationList = 87EC00AA1DE88D3D007C1F66 /* Build configuration list for PBXProject "KeyType" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -342,6 +342,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -400,6 +401,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -450,6 +452,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = KeyType/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -457,7 +460,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.potsbo.KeyType;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -465,6 +468,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = KeyType/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -472,7 +476,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.potsbo.KeyType;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -487,7 +491,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.potsbo.KeyTypeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeyType.app/Contents/MacOS/KeyType";
 			};
 			name = Debug;
@@ -503,7 +507,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.potsbo.KeyTypeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeyType.app/Contents/MacOS/KeyType";
 			};
 			name = Release;
@@ -518,7 +522,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.potsbo.KeyTypeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = KeyType;
 			};
 			name = Debug;
@@ -533,7 +537,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.potsbo.KeyTypeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = KeyType;
 			};
 			name = Release;
