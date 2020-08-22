@@ -63,8 +63,8 @@ enum Key: UInt16 {
     case DELETE = 51
     case ENTER_POWERBOOK = 52
     case ESCAPE = 53
-    case COMMAND_R = 54
-    case COMMAND_L = 55
+    case commandR = 54
+    case commandL = 55
     case SHIFT_L = 56
     case CAPSLOCK = 57
     case OPTION_L = 58
@@ -140,7 +140,7 @@ enum Key: UInt16 {
     }
 
     static var modifiers: [Key] {
-        return [.COMMAND_L, .COMMAND_R, .SHIFT_L, .SHIFT_R, .CONTROL_L, .CONTROL_R, .OPTION_L, .OPTION_R, .FN, .CAPSLOCK]
+        return [.commandL, .commandR, .SHIFT_L, .SHIFT_R, .CONTROL_L, .CONTROL_R, .OPTION_L, .OPTION_R, .FN, .CAPSLOCK]
     }
 
     var alone: KeyCombination {
