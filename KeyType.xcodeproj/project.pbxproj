@@ -92,6 +92,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		87DADDD524F185B700D79B36 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				87DADDD324F16BDD00D79B36 /* KeyMapCollection.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		87DADDD624F185E000D79B36 /* Key */ = {
+			isa = PBXGroup;
+			children = (
+				870105971DE979DC00486507 /* Key.swift */,
+				8701059F1DEA07E700486507 /* KeyCombination.swift */,
+				870105951DE968CF00486507 /* KeyEventMap.swift */,
+			);
+			path = Key;
+			sourceTree = "<group>";
+		};
 		87EC00A61DE88D3D007C1F66 = {
 			isa = PBXGroup;
 			children = (
@@ -115,20 +133,18 @@
 		87EC00B11DE88D3D007C1F66 /* KeyType */ = {
 			isa = PBXGroup;
 			children = (
+				87DADDD624F185E000D79B36 /* Key */,
+				87DADDD524F185B700D79B36 /* Collection */,
 				87EC00B21DE88D3D007C1F66 /* AppDelegate.swift */,
 				87EC00B41DE88D3D007C1F66 /* ViewController.swift */,
 				87EC00DD1DE89151007C1F66 /* KeyEventWatcher.swift */,
 				870105A31DEA0B5500486507 /* KeyMapConfigration.swift */,
 				870105931DE9646100486507 /* KeyEventController.swift */,
-				870105951DE968CF00486507 /* KeyEventMap.swift */,
-				870105971DE979DC00486507 /* Key.swift */,
-				8701059F1DEA07E700486507 /* KeyCombination.swift */,
 				870105991DE97ADB00486507 /* ModifiedProgrammerDvorak.swift */,
 				870105A11DEA08AA00486507 /* CGEventExtension.swift */,
 				87EC00B61DE88D3D007C1F66 /* Assets.xcassets */,
 				87EC00B81DE88D3D007C1F66 /* Main.storyboard */,
 				87EC00BB1DE88D3D007C1F66 /* Info.plist */,
-				87DADDD324F16BDD00D79B36 /* KeyMapCollection.swift */,
 			);
 			path = KeyType;
 			sourceTree = "<group>";
