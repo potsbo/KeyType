@@ -13,5 +13,8 @@ class KeyCombinationTests: XCTestCase {
     func testExample() {
         XCTAssert(KeyCombination(Key.A).label == "A")
         XCTAssert(KeyCombination(Key.A).without.command.label == "A")
+        let res = EventConverter(KanaEisu).getConvertedEvent(CGEvent(keyboardEventSource: nil, virtualKey: Key.commandL.rawValue, keyDown: false)!)
+        XCTAssertNotNil(res)
+        XCTAssert(res?.keyCode == Key.EISU.rawValue)
     }
 }
