@@ -94,7 +94,7 @@ class KeyCombination {
         keyUpEvent.post(tap: loc)
     }
 
-    func isCompatibleWith(_ mapping: Remap) -> Bool {
+    func isCompatible(with mapping: Remap) -> Bool {
         let cmb = mapping.input
         if cmb.has(modifier: .maskCommand), !has(modifier: .maskCommand) { return false }
         if cmb.has(modifier: .maskShift), !has(modifier: .maskShift) { return false }
