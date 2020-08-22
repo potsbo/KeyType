@@ -11,7 +11,7 @@ import Foundation
 class DefaultConfiguration {
     var keyMappingList: [KeyEventMap] = []
 
-    var mapList: [CGKeyCode: [KeyEventMap]] {
+    private var mapList: [CGKeyCode: [KeyEventMap]] {
         if needsRehashing { rehash() }
         return storedList
     }
@@ -36,5 +36,23 @@ class DefaultConfiguration {
 
     init(_ keyMappingList: KeyMapCollection) {
         self.keyMappingList = keyMappingList
+    }
+
+    func getConvertedEvent(_ event: CGEvent, keyCode: CGKeyCode? = nil) -> CGEvent? {
+        let eventKeyCombination = KeyCombination(fromEvent: event)
+
+        guard let candidateMaps = mapList[keyCode ?? eventKeyCombination.keyCode] else {
+            return nil
+        }
+
+        for map in candidateMaps {
+            if eventKeyCombination.isCompatibleWith(map) {
+                event.keyCode = map.outputKeyCode
+                event.flags = map.renderEventFlagFor(event: event)
+                return event
+            }
+        }
+
+        return nil
     }
 }

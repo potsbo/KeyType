@@ -85,13 +85,13 @@ class KeyEventWatcher {
 
     private func keyDown(_ event: CGEvent) -> Unmanaged<CGEvent>? {
         keyCode = nil
-        let event = getConvertedEvent(event) ?? event
+        let event = config.getConvertedEvent(event) ?? event
         return Unmanaged.passRetained(event)
     }
 
     private func keyUp(_ event: CGEvent) -> Unmanaged<CGEvent>? {
         keyCode = nil
-        let event = getConvertedEvent(event) ?? event
+        let event = config.getConvertedEvent(event) ?? event
         return Unmanaged.passRetained(event)
     }
 
@@ -102,29 +102,11 @@ class KeyEventWatcher {
 
     private func modifierKeyUp(_ event: CGEvent) -> Unmanaged<CGEvent>? {
         if keyCode == event.keyCode {
-            if let convertedEvent = getConvertedEvent(event) {
+            if let convertedEvent = config.getConvertedEvent(event) {
                 KeyCombination(fromEvent: convertedEvent).postEvent()
             }
         }
         keyCode = nil
         return Unmanaged.passRetained(event)
-    }
-
-    private func getConvertedEvent(_ event: CGEvent, keyCode: CGKeyCode? = nil) -> CGEvent? {
-        let eventKeyCombination = KeyCombination(fromEvent: event)
-
-        guard let candidateMaps = config.mapList[keyCode ?? eventKeyCombination.keyCode] else {
-            return nil
-        }
-
-        for map in candidateMaps {
-            if eventKeyCombination.isCompatibleWith(map) {
-                event.keyCode = map.outputKeyCode
-                event.flags = map.renderEventFlagFor(event: event)
-                return event
-            }
-        }
-
-        return nil
     }
 }
