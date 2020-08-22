@@ -96,15 +96,13 @@ class KeyCombination {
 
     func isCompatibleWith(_ mapping: KeyEventMap) -> Bool {
         let cmb = mapping.input
-        if cmb.has(modifier: .maskCommand) && !has(modifier: .maskCommand) ||
-            cmb.has(modifier: .maskShift) && !has(modifier: .maskShift) ||
-            cmb.has(modifier: .maskControl) && !has(modifier: .maskControl) ||
-            cmb.has(modifier: .maskAlternate) && !has(modifier: .maskAlternate) ||
-            cmb.has(modifier: .maskSecondaryFn) && !has(modifier: .maskSecondaryFn) ||
-            cmb.has(modifier: .maskAlphaShift) && !has(modifier: .maskAlphaShift)
-        {
-            return false
-        }
+        if cmb.has(modifier: .maskCommand), !has(modifier: .maskCommand) { return false }
+        if cmb.has(modifier: .maskShift), !has(modifier: .maskShift) { return false }
+        if cmb.has(modifier: .maskControl), !has(modifier: .maskControl) { return false }
+        if cmb.has(modifier: .maskAlternate), !has(modifier: .maskAlternate) { return false }
+        if cmb.has(modifier: .maskSecondaryFn), !has(modifier: .maskSecondaryFn) { return false }
+        if cmb.has(modifier: .maskAlphaShift), !has(modifier: .maskAlphaShift) { return false }
+
         return mapping.hasAnyModToAvoid(flags)
     }
 }
