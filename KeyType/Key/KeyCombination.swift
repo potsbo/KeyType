@@ -14,10 +14,6 @@ class KeyCombination {
     private var withoutFlags = CGEventFlags()
     private var addToWithFlag = true
 
-    var withoutModifier: CGEventFlags {
-        return withoutFlags
-    }
-
     init(fromEvent: CGEvent) {
         keyCode = fromEvent.keyCode
         withFlags = fromEvent.flags
@@ -62,11 +58,6 @@ class KeyCombination {
         return self
     }
 
-    var label: String {
-        guard let key = Key(rawValue: keyCode) else { return flagString }
-        return flagString + String(describing: key)
-    }
-
     func postEvent() {
         let loc = CGEventTapLocation.cghidEventTap
 
@@ -80,8 +71,7 @@ class KeyCombination {
         keyUpEvent.post(tap: loc)
     }
 
-    func isCompatible(with mapping: Remap) -> Bool {
-        let cmb = mapping.input
+    func isCompatible(with cmb: KeyCombination) -> Bool {
         if cmb.has(modifier: .maskCommand), !has(modifier: .maskCommand) { return false }
         if cmb.has(modifier: .maskShift), !has(modifier: .maskShift) { return false }
         if cmb.has(modifier: .maskControl), !has(modifier: .maskControl) { return false }
@@ -89,12 +79,25 @@ class KeyCombination {
         if cmb.has(modifier: .maskSecondaryFn), !has(modifier: .maskSecondaryFn) { return false }
         if cmb.has(modifier: .maskAlphaShift), !has(modifier: .maskAlphaShift) { return false }
 
-        return mapping.hasAnyModToAvoid(withFlags)
+        return cmb.hasAnyModToAvoid(withFlags)
+    }
+
+    private func hasAnyModToAvoid(_ flags: CGEventFlags) -> Bool {
+        return flags.rawValue & withoutFlags.rawValue == 0
+    }
+    
+    private func has(modifier key: CGEventFlags) -> Bool {
+        return withFlags.contains(key)
     }
 }
 
 // Debug
 extension KeyCombination {
+    var label: String {
+        guard let key = Key(rawValue: keyCode) else { return flagString }
+        return flagString + String(describing: key)
+    }
+
     private var flagString: String {
         var flagString = ""
         if has(modifier: .maskSecondaryFn) { flagString += "(fn)" }
@@ -104,9 +107,5 @@ extension KeyCombination {
         if has(modifier: .maskControl) { flagString += "⌃" }
         if has(modifier: .maskAlternate) { flagString += "⌥" }
         return flagString
-    }
-
-    private func has(modifier key: CGEventFlags) -> Bool {
-        return withFlags.contains(key)
     }
 }

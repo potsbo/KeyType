@@ -27,8 +27,4 @@ class Remap: NSObject {
         let rawValue = (event.flags.rawValue & ~input.withFlags.rawValue) | output.withFlags.rawValue
         return CGEventFlags(rawValue: rawValue)
     }
-
-    func hasAnyModToAvoid(_ flags: CGEventFlags) -> Bool {
-        return flags.rawValue & input.withoutModifier.rawValue == 0
-    }
 }
