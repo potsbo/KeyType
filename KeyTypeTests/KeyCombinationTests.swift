@@ -18,6 +18,10 @@ class KeyCombinationTests: XCTestCase {
         XCTAssert(convert(KanaEisu, key: Key.commandR)?.keyCode == Key.KANA.rawValue)
     }
 
+    func testChain() {
+        XCTAssertFalse(Key.commandR.without.command.withFlags.contains(.maskCommand))
+    }
+
     private func convert(_ collection: KeyMapCollection, key: Key) -> CGEvent? {
         let converter = EventConverter(collection)
         let event = CGEvent(

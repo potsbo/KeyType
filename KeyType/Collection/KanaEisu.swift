@@ -9,6 +9,6 @@
 import Foundation
 
 let KanaEisu: KeyMapCollection = [
-    Remap(Key.commandL.without.command, to: Key.EISU.alone),
-    Remap(Key.commandR.without.command, to: Key.KANA.alone),
+    Remap(Key.commandL.without.command, to: Key.EISU),
+    Remap(Key.commandR.without.command, to: Key.KANA),
 ]

@@ -35,7 +35,7 @@ class EventConverter {
         }
 
         for remap in candidateRemaps {
-            if eventKeyCombination.isCompatible(with: remap) {
+            if eventKeyCombination.canTrigger(remap.input) {
                 event.keyCode = remap.outputKeyCode
                 event.flags = remap.renderEventFlag(for: event)
                 return event

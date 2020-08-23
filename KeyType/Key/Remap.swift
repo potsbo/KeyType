@@ -18,12 +18,13 @@ class Remap: NSObject {
         self.output = output
     }
 
-    func renderEventFlag(for event: CGEvent) -> CGEventFlags {
-        let rawValue = (event.flags.rawValue & ~input.flags.rawValue) | output.flags.rawValue
-        return CGEventFlags(rawValue: rawValue)
+    init(_ from: KeyCombination, to output: Key) {
+        input = from
+        self.output = output.alone
     }
 
-    func hasAnyModToAvoid(_ flags: CGEventFlags) -> Bool {
-        return flags.rawValue & input.withoutModifier.rawValue == 0
+    func renderEventFlag(for event: CGEvent) -> CGEventFlags {
+        let rawValue = (event.flags.rawValue & ~input.withFlags.rawValue) | output.withFlags.rawValue
+        return CGEventFlags(rawValue: rawValue)
     }
 }
