@@ -12,7 +12,7 @@ let Custom = [
     // To launch Alfred faster
     Remap(Key.shiftR.without.shift, to: Key.SPACE.with.option),
     // Left to 'a' becomes escape
-    Remap(Key.ctrlR.without.ctrl, to: Key.ESCAPE.alone),
+    Remap(Key.ctrlR.without.ctrl, to: Key.ESCAPE),
     // To launch OmniFocus faster
     Remap(Key.shiftL.without.shift, to: Key.SPACE.with.shift.command.option),
 ]

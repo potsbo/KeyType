@@ -18,8 +18,13 @@ class Remap: NSObject {
         self.output = output
     }
 
+    init(_ from: KeyCombination, to output: Key) {
+        input = from
+        self.output = output.alone
+    }
+
     func renderEventFlag(for event: CGEvent) -> CGEventFlags {
-        let rawValue = (event.flags.rawValue & ~input.flags.rawValue) | output.flags.rawValue
+        let rawValue = (event.flags.rawValue & ~input.withFlags.rawValue) | output.withFlags.rawValue
         return CGEventFlags(rawValue: rawValue)
     }
 

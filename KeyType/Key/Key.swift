@@ -45,7 +45,7 @@ enum Key: UInt16 {
     case SQUARE_BRA = 33
     case I = 34
     case P = 35
-    case RETURN = 36
+    case returnKey = 36
     case L = 37
     case J = 38
     case QUOTE = 39
@@ -60,7 +60,7 @@ enum Key: UInt16 {
     case TAB = 48
     case SPACE = 49
     case BACKQUOTE = 50
-    case DELETE = 51
+    case delete = 51
     case ENTER_POWERBOOK = 52
     case ESCAPE = 53
     case commandR = 54
@@ -123,10 +123,10 @@ enum Key: UInt16 {
     case F2 = 120
     case PG_DOWN = 121
     case F1 = 122
-    case LEFT_ARROW = 123
-    case RIGHT_ARROW = 124
-    case DOWN_ARROW = 125
-    case UP_ARROW = 126
+    case leftArrow = 123
+    case rightArrow = 124
+    case downArrow = 125
+    case upArrow = 126
     case PC_POWER = 127
     case GERMAN_PC_LESS_THAN = 128
     case DASHBOARD = 130
