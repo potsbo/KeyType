@@ -16,15 +16,25 @@ class KeyCombinationTests: XCTestCase {
 
     func testRightCommandToKana() {
         XCTAssert(convert(KanaEisu, key: Key.commandR)?.keyCode == Key.KANA.rawValue)
+        XCTAssertNil(convert(KanaEisu, key: Key.A))
     }
 
-    private func convert(_ collection: KeyMapCollection, key: Key) -> CGEvent? {
+    func testNoTouch() {
+        XCTAssertNil(convert(KanaEisu, key: Key.A))
+        XCTAssertNil(convert(KanaEisu, key: Key.A, flags: .maskCommand))
+        XCTAssertNil(convert(KanaEisu, key: Key.commandR, flags: .maskCommand))
+    }
+
+    private func convert(_ collection: KeyMapCollection, key: Key, flags: CGEventFlags? = nil) -> CGEvent? {
         let converter = EventConverter(collection)
         let event = CGEvent(
             keyboardEventSource: nil,
             virtualKey: key.rawValue,
             keyDown: false
         )!
+        if let flags = flags {
+            event.flags.insert(flags)
+        }
         return converter.getConvertedEvent(event)
     }
 }
