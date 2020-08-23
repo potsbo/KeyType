@@ -17,7 +17,7 @@ private func setMappingList() -> KeyMapCollection {
     maps += numberMappings
     maps += symbolMappings
 
-    return maps.map { KeyEventMap($0[0], to: $0[1]) }
+    return maps.map { Remap($0[0], to: $0[1]) }
 }
 
 private var dvorakBaseMappings: [[KeyCombination]] {

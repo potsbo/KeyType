@@ -9,46 +9,35 @@
 import Foundation
 
 class EventConverter {
-    var keyMappingList: [KeyEventMap] = []
+    private var remapMap: [CGKeyCode: [Remap]]
 
-    private var mapList: [CGKeyCode: [KeyEventMap]] {
-        if needsRehashing { rehash() }
-        return storedList
-    }
-
-    private var storedList: [CGKeyCode: [KeyEventMap]] = [:]
-    private var needsRehashing = true
-
-    private func rehash() {
-        storedList = [:]
+    init(_ keyMappingList: KeyMapCollection) {
+        var remapList: [CGKeyCode: [Remap]] = [:]
 
         for val in keyMappingList {
             let key = val.input.keyCode
 
-            if storedList[key] == nil {
-                storedList[key] = []
+            if remapList[key] == nil {
+                remapList[key] = []
             }
 
-            storedList[key]?.append(val)
+            remapList[key]?.append(val)
         }
-        needsRehashing = false
+
+        remapMap = remapList
     }
 
-    init(_ keyMappingList: KeyMapCollection) {
-        self.keyMappingList = keyMappingList
-    }
-
-    func getConvertedEvent(_ event: CGEvent, keyCode: CGKeyCode? = nil) -> CGEvent? {
+    func getConvertedEvent(_ event: CGEvent) -> CGEvent? {
         let eventKeyCombination = KeyCombination(fromEvent: event)
 
-        guard let candidateMaps = mapList[keyCode ?? eventKeyCombination.keyCode] else {
+        guard let candidateRemaps = remapMap[eventKeyCombination.keyCode] else {
             return nil
         }
 
-        for map in candidateMaps {
-            if eventKeyCombination.isCompatibleWith(map) {
-                event.keyCode = map.outputKeyCode
-                event.flags = map.renderEventFlagFor(event: event)
+        for remap in candidateRemaps {
+            if eventKeyCombination.isCompatible(with: remap) {
+                event.keyCode = remap.outputKeyCode
+                event.flags = remap.renderEventFlag(for: event)
                 return event
             }
         }

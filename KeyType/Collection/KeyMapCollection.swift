@@ -8,4 +8,4 @@
 
 import Foundation
 
-typealias KeyMapCollection = [KeyEventMap]
+typealias KeyMapCollection = [Remap]
