@@ -52,12 +52,8 @@ class KeyCombination {
         return addMask(.maskAlternate)
     }
 
-    private func setModeExAddition() {
-        addToWithFlag = false
-    }
-
     var without: KeyCombination {
-        setModeExAddition()
+        addToWithFlag = false
         return self
     }
 
