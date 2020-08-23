@@ -71,7 +71,7 @@ class KeyCombination {
         keyUpEvent.post(tap: loc)
     }
 
-    func isCompatible(with cmb: KeyCombination) -> Bool {
+    func canTrigger(_ cmb: KeyCombination) -> Bool {
         if cmb.has(modifier: .maskCommand), !has(modifier: .maskCommand) { return false }
         if cmb.has(modifier: .maskShift), !has(modifier: .maskShift) { return false }
         if cmb.has(modifier: .maskControl), !has(modifier: .maskControl) { return false }
@@ -85,7 +85,7 @@ class KeyCombination {
     private func hasAnyModToAvoid(_ flags: CGEventFlags) -> Bool {
         return flags.rawValue & withoutFlags.rawValue == 0
     }
-    
+
     private func has(modifier key: CGEventFlags) -> Bool {
         return withFlags.contains(key)
     }
