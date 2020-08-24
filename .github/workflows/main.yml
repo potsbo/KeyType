@@ -19,7 +19,7 @@ jobs:
     - name: Build
       run: make build | xcpretty
     - name: Test
-      run: make test | xcpretty
+      run: make test
     - name: Upload coverage information
       run: bash <(curl -s https://codecov.io/bash)
     - name: Dist
