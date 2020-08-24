@@ -19,6 +19,7 @@
 		87DADDD824F1866100D79B36 /* KanaEisu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DADDD724F1866100D79B36 /* KanaEisu.swift */; };
 		87DADDDA24F1874600D79B36 /* LRDvorak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DADDD924F1874600D79B36 /* LRDvorak.swift */; };
 		87DADDDC24F189A100D79B36 /* Emacs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DADDDB24F189A100D79B36 /* Emacs.swift */; };
+		87DADDDE24F3D1C600D79B36 /* EventConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DADDDD24F3D1C600D79B36 /* EventConverter.swift */; };
 		87EC00B31DE88D3D007C1F66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EC00B21DE88D3D007C1F66 /* AppDelegate.swift */; };
 		87EC00B51DE88D3D007C1F66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EC00B41DE88D3D007C1F66 /* ViewController.swift */; };
 		87EC00B71DE88D3D007C1F66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87EC00B61DE88D3D007C1F66 /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		87DADDD724F1866100D79B36 /* KanaEisu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanaEisu.swift; sourceTree = "<group>"; };
 		87DADDD924F1874600D79B36 /* LRDvorak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRDvorak.swift; sourceTree = "<group>"; };
 		87DADDDB24F189A100D79B36 /* Emacs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emacs.swift; sourceTree = "<group>"; };
+		87DADDDD24F3D1C600D79B36 /* EventConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventConverter.swift; sourceTree = "<group>"; };
 		87EC00AF1DE88D3D007C1F66 /* KeyType.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyType.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87EC00B21DE88D3D007C1F66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87EC00B41DE88D3D007C1F66 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				87EC00B61DE88D3D007C1F66 /* Assets.xcassets */,
 				87EC00B81DE88D3D007C1F66 /* Main.storyboard */,
 				87EC00BB1DE88D3D007C1F66 /* Info.plist */,
+				87DADDDD24F3D1C600D79B36 /* EventConverter.swift */,
 			);
 			path = KeyType;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				8768503124F198E20021D517 /* Custom.swift in Sources */,
 				87EC00B51DE88D3D007C1F66 /* ViewController.swift in Sources */,
 				8701059A1DE97ADB00486507 /* RemapFinder.swift in Sources */,
+				87DADDDE24F3D1C600D79B36 /* EventConverter.swift in Sources */,
 				87DADDDA24F1874600D79B36 /* LRDvorak.swift in Sources */,
 				870105961DE968CF00486507 /* Remap.swift in Sources */,
 				87EC00B31DE88D3D007C1F66 /* AppDelegate.swift in Sources */,
