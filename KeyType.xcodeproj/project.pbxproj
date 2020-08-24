@@ -10,7 +10,7 @@
 		870105941DE9646100486507 /* KeyEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870105931DE9646100486507 /* KeyEventController.swift */; };
 		870105961DE968CF00486507 /* Remap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870105951DE968CF00486507 /* Remap.swift */; };
 		870105981DE979DC00486507 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870105971DE979DC00486507 /* Key.swift */; };
-		8701059A1DE97ADB00486507 /* EventConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870105991DE97ADB00486507 /* EventConverter.swift */; };
+		8701059A1DE97ADB00486507 /* RemapFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870105991DE97ADB00486507 /* RemapFinder.swift */; };
 		870105A01DEA07E700486507 /* KeyCombination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8701059F1DEA07E700486507 /* KeyCombination.swift */; };
 		870105A21DEA08AA00486507 /* CGEventExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870105A11DEA08AA00486507 /* CGEventExtension.swift */; };
 		8768503124F198E20021D517 /* Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8768503024F198E20021D517 /* Custom.swift */; };
@@ -19,6 +19,7 @@
 		87DADDD824F1866100D79B36 /* KanaEisu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DADDD724F1866100D79B36 /* KanaEisu.swift */; };
 		87DADDDA24F1874600D79B36 /* LRDvorak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DADDD924F1874600D79B36 /* LRDvorak.swift */; };
 		87DADDDC24F189A100D79B36 /* Emacs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DADDDB24F189A100D79B36 /* Emacs.swift */; };
+		87DADDDE24F3D1C600D79B36 /* EventConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DADDDD24F3D1C600D79B36 /* EventConverter.swift */; };
 		87EC00B31DE88D3D007C1F66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EC00B21DE88D3D007C1F66 /* AppDelegate.swift */; };
 		87EC00B51DE88D3D007C1F66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EC00B41DE88D3D007C1F66 /* ViewController.swift */; };
 		87EC00B71DE88D3D007C1F66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87EC00B61DE88D3D007C1F66 /* Assets.xcassets */; };
@@ -49,7 +50,7 @@
 		870105931DE9646100486507 /* KeyEventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyEventController.swift; sourceTree = "<group>"; };
 		870105951DE968CF00486507 /* Remap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Remap.swift; sourceTree = "<group>"; };
 		870105971DE979DC00486507 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
-		870105991DE97ADB00486507 /* EventConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventConverter.swift; sourceTree = "<group>"; };
+		870105991DE97ADB00486507 /* RemapFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemapFinder.swift; sourceTree = "<group>"; };
 		8701059F1DEA07E700486507 /* KeyCombination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCombination.swift; sourceTree = "<group>"; };
 		870105A11DEA08AA00486507 /* CGEventExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGEventExtension.swift; sourceTree = "<group>"; };
 		8768503024F198E20021D517 /* Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Custom.swift; sourceTree = "<group>"; };
@@ -58,6 +59,7 @@
 		87DADDD724F1866100D79B36 /* KanaEisu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanaEisu.swift; sourceTree = "<group>"; };
 		87DADDD924F1874600D79B36 /* LRDvorak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRDvorak.swift; sourceTree = "<group>"; };
 		87DADDDB24F189A100D79B36 /* Emacs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emacs.swift; sourceTree = "<group>"; };
+		87DADDDD24F3D1C600D79B36 /* EventConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventConverter.swift; sourceTree = "<group>"; };
 		87EC00AF1DE88D3D007C1F66 /* KeyType.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyType.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87EC00B21DE88D3D007C1F66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87EC00B41DE88D3D007C1F66 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -149,11 +151,12 @@
 				87EC00B41DE88D3D007C1F66 /* ViewController.swift */,
 				87EC00DD1DE89151007C1F66 /* KeyEventWatcher.swift */,
 				870105931DE9646100486507 /* KeyEventController.swift */,
-				870105991DE97ADB00486507 /* EventConverter.swift */,
+				870105991DE97ADB00486507 /* RemapFinder.swift */,
 				870105A11DEA08AA00486507 /* CGEventExtension.swift */,
 				87EC00B61DE88D3D007C1F66 /* Assets.xcassets */,
 				87EC00B81DE88D3D007C1F66 /* Main.storyboard */,
 				87EC00BB1DE88D3D007C1F66 /* Info.plist */,
+				87DADDDD24F3D1C600D79B36 /* EventConverter.swift */,
 			);
 			path = KeyType;
 			sourceTree = "<group>";
@@ -336,7 +339,8 @@
 			files = (
 				8768503124F198E20021D517 /* Custom.swift in Sources */,
 				87EC00B51DE88D3D007C1F66 /* ViewController.swift in Sources */,
-				8701059A1DE97ADB00486507 /* EventConverter.swift in Sources */,
+				8701059A1DE97ADB00486507 /* RemapFinder.swift in Sources */,
+				87DADDDE24F3D1C600D79B36 /* EventConverter.swift in Sources */,
 				87DADDDA24F1874600D79B36 /* LRDvorak.swift in Sources */,
 				870105961DE968CF00486507 /* Remap.swift in Sources */,
 				87EC00B31DE88D3D007C1F66 /* AppDelegate.swift in Sources */,
