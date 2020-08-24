@@ -8,7 +8,7 @@
 
 import Foundation
 
-class EventConverter {
+class RemapFinder {
     private var remapMap: [CGKeyCode: [Remap]]
 
     init(_ keyMappingList: KeyMapCollection) {
@@ -27,6 +27,7 @@ class EventConverter {
         remapMap = remapList
     }
 
+    // TODO: return remap instead of CGEvent
     func getConvertedEvent(_ event: CGEvent) -> CGEvent? {
         let eventKeyCombination = KeyCombination(fromEvent: event)
 

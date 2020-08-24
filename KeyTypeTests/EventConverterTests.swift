@@ -64,7 +64,7 @@ class EventConverterTests: XCTestCase {
     }
 
     private func convert(_ collection: KeyMapCollection, key: Key, flags: CGEventFlags? = nil) -> CGEvent? {
-        let converter = EventConverter(collection)
+        let converter = RemapFinder(collection)
         let event = CGEvent(
             keyboardEventSource: nil,
             virtualKey: key.rawValue,
