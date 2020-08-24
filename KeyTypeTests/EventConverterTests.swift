@@ -9,7 +9,7 @@
 @testable import KeyType
 import XCTest
 
-class KeyCombinationTests: XCTestCase {
+class EventConverterTests: XCTestCase {
     func testLeftCommandToEisu() {
         XCTAssert(convert(KanaEisu, key: Key.commandL)?.keyCode == Key.EISU.rawValue)
     }
@@ -23,6 +23,44 @@ class KeyCombinationTests: XCTestCase {
         XCTAssertNil(convert(KanaEisu, key: Key.A))
         XCTAssertNil(convert(KanaEisu, key: Key.A, flags: .maskCommand))
         XCTAssertNil(convert(KanaEisu, key: Key.commandR, flags: .maskCommand))
+    }
+
+    func testWithoutSimple() {
+        XCTAssertTrue(
+            convert(
+                [Remap(Key.A.without.option, to: Key.B.alone)],
+                key: Key.A
+            )?.keyCode == Key.B.rawValue
+        )
+    }
+
+    func testWithoutWithModifier() {
+        // with `shift`
+        XCTAssertTrue(
+            convert(
+                [Remap(Key.A.without.option, to: Key.B.alone)],
+                key: Key.A,
+                flags: CGEventFlags.maskShift
+            )?.keyCode == Key.B.rawValue
+        )
+
+        // with `shift` and `command`
+        XCTAssertTrue(
+            convert(
+                [Remap(Key.A.without.option, to: Key.B.alone)],
+                key: Key.A,
+                flags: CGEventFlags.maskShift.union(.maskCommand)
+            )?.keyCode == Key.B.rawValue
+        )
+
+        // key with `option` can never trigger the Remap
+        XCTAssertNil(
+            convert(
+                [Remap(Key.A.with.shift.without.option, to: Key.B.alone)],
+                key: Key.A,
+                flags: CGEventFlags.maskShift.union(.maskAlternate)
+            )
+        )
     }
 
     private func convert(_ collection: KeyMapCollection, key: Key, flags: CGEventFlags? = nil) -> CGEvent? {
