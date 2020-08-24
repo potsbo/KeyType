@@ -48,7 +48,7 @@ class KeyEventWatcher {
         func callback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, refcon: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>? {
             guard let observer = refcon else { return Unmanaged.passRetained(event) }
             let mySelf = Unmanaged<KeyEventWatcher>.fromOpaque(observer).takeUnretainedValue()
-            return Unmanaged.passRetained( mySelf.config.eventCallback(proxy: proxy, type: type, event: event))
+            return Unmanaged.passRetained(mySelf.config.eventCallback(proxy: proxy, type: type, event: event))
         }
 
         let tap = CGEvent.tapCreate(
