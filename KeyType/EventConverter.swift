@@ -16,7 +16,7 @@ class EventConverter {
         self.finder = finder
     }
 
-    func eventCallback(proxy _: CGEventTapProxy, type: CGEventType, event: CGEvent) -> CGEvent {
+    func convert(type: CGEventType, event: CGEvent) -> CGEvent {
         switch type {
         case .flagsChanged:
             if event.isModiferKeyEvent() {

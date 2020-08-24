@@ -45,10 +45,10 @@ class KeyEventWatcher {
 
     private func eventTap() -> CFMachPort? {
         let observer = UnsafeMutableRawPointer(Unmanaged.passRetained(self).toOpaque())
-        func callback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, refcon: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>? {
+        func callback(proxy _: CGEventTapProxy, type: CGEventType, event: CGEvent, refcon: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>? {
             guard let observer = refcon else { return Unmanaged.passRetained(event) }
             let mySelf = Unmanaged<KeyEventWatcher>.fromOpaque(observer).takeUnretainedValue()
-            return Unmanaged.passRetained(mySelf.config.eventCallback(proxy: proxy, type: type, event: event))
+            return Unmanaged.passRetained(mySelf.config.convert(type: type, event: event))
         }
 
         let tap = CGEvent.tapCreate(
