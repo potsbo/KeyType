@@ -1,0 +1,3 @@
+ignore:
+  - KeyTypeTests
+  - KeyTypeUITests
