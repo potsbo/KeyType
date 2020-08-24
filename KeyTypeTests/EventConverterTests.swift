@@ -73,6 +73,6 @@ class EventConverterTests: XCTestCase {
         if let flags = flags {
             event.flags.insert(flags)
         }
-        return converter.getConvertedEvent(event)
+        return converter.find(event)
     }
 }

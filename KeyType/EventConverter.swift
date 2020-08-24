@@ -36,13 +36,13 @@ class EventConverter {
 
     private func keyDown(_ event: CGEvent) -> CGEvent {
         keyCode = nil
-        let event = finder.getConvertedEvent(event) ?? event
+        let event = finder.find(event) ?? event
         return event
     }
 
     private func keyUp(_ event: CGEvent) -> CGEvent {
         keyCode = nil
-        let event = finder.getConvertedEvent(event) ?? event
+        let event = finder.find(event) ?? event
         return event
     }
 
@@ -53,7 +53,7 @@ class EventConverter {
 
     private func modifierKeyUp(_ event: CGEvent) -> CGEvent {
         if keyCode == event.keyCode {
-            if let convertedEvent = finder.getConvertedEvent(event) {
+            if let convertedEvent = finder.find(event) {
                 KeyCombination(fromEvent: convertedEvent).postEvent()
             }
         }

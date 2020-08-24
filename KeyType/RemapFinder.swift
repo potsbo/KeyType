@@ -28,7 +28,7 @@ class RemapFinder {
     }
 
     // TODO: return remap instead of CGEvent
-    func getConvertedEvent(_ event: CGEvent) -> CGEvent? {
+    func find(_ event: CGEvent) -> CGEvent? {
         let eventKeyCombination = KeyCombination(fromEvent: event)
 
         guard let candidateRemaps = remapMap[eventKeyCombination.keyCode] else {
