@@ -11,18 +11,17 @@ import XCTest
 
 class EventConverterTests: XCTestCase {
     func testLeftCommandToEisu() {
-        XCTAssert(convert(KanaEisu, key: Key.commandL)?.keyCode == Key.EISU.rawValue)
+        XCTAssert(convert(KanaEisu, key: Key.commandL).keyCode == Key.EISU.rawValue)
     }
 
     func testRightCommandToKana() {
-        XCTAssert(convert(KanaEisu, key: Key.commandR)?.keyCode == Key.KANA.rawValue)
-        XCTAssertNil(convert(KanaEisu, key: Key.A))
+        XCTAssert(convert(KanaEisu, key: Key.commandR).keyCode == Key.KANA.rawValue)
+        XCTAssert(convert(KanaEisu, key: Key.A).keyCode == Key.A.rawValue)
     }
 
     func testNoTouch() {
-        XCTAssertNil(convert(KanaEisu, key: Key.A))
-        XCTAssertNil(convert(KanaEisu, key: Key.A, flags: .maskCommand))
-        XCTAssertNil(convert(KanaEisu, key: Key.commandR, flags: .maskCommand))
+        XCTAssertTrue(convert(KanaEisu, key: Key.A, flags: .maskCommand).keyCode == Key.A.rawValue)
+        XCTAssertTrue(convert(KanaEisu, key: Key.commandR, flags: .maskCommand).keyCode == Key.commandR.rawValue)
     }
 
     func testWithoutSimple() {
@@ -30,7 +29,7 @@ class EventConverterTests: XCTestCase {
             convert(
                 [Remap(Key.A.without.option, to: Key.B.alone)],
                 key: Key.A
-            )?.keyCode == Key.B.rawValue
+            ).keyCode == Key.B.rawValue
         )
     }
 
@@ -41,7 +40,7 @@ class EventConverterTests: XCTestCase {
                 [Remap(Key.A.without.option, to: Key.B.alone)],
                 key: Key.A,
                 flags: CGEventFlags.maskShift
-            )?.keyCode == Key.B.rawValue
+            ).keyCode == Key.B.rawValue
         )
 
         // with `shift` and `command`
@@ -50,20 +49,20 @@ class EventConverterTests: XCTestCase {
                 [Remap(Key.A.without.option, to: Key.B.alone)],
                 key: Key.A,
                 flags: CGEventFlags.maskShift.union(.maskCommand)
-            )?.keyCode == Key.B.rawValue
+            ).keyCode == Key.B.rawValue
         )
 
         // key with `option` can never trigger the Remap
-        XCTAssertNil(
+        XCTAssertTrue(
             convert(
                 [Remap(Key.A.with.shift.without.option, to: Key.B.alone)],
                 key: Key.A,
                 flags: CGEventFlags.maskShift.union(.maskAlternate)
-            )
+            ).keyCode == Key.A.rawValue
         )
     }
 
-    private func convert(_ collection: KeyMapCollection, key: Key, flags: CGEventFlags? = nil) -> CGEvent? {
+    private func convert(_ collection: KeyMapCollection, key: Key, flags: CGEventFlags? = nil) -> CGEvent {
         let finder = RemapFinder(collection)
         let converter = EventConverter(finder: finder)
         let event = CGEvent(
