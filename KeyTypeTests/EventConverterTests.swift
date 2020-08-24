@@ -74,6 +74,6 @@ class EventConverterTests: XCTestCase {
         if let flags = flags {
             event.flags.insert(flags)
         }
-        return converter.eventCallback(type: .keyDown, event: event)
+        return converter.convert(type: .keyDown, event: event)
     }
 }
