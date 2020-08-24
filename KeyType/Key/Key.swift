@@ -139,10 +139,6 @@ enum Key: UInt16 {
         return [.NUM1, .NUM2, .NUM3, .NUM4, .NUM5, .NUM6, .NUM7, .NUM8, .NUM9, .NUM0]
     }
 
-    static var modifiers: [Key] {
-        return [.commandL, .commandR, .shiftL, .shiftR, .ctrlL, .ctrlR, .optionL, .optionR, .fn, .capslock]
-    }
-
     var alone: KeyCombination {
         return KeyCombination(self)
     }
