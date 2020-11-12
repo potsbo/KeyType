@@ -2,10 +2,6 @@ language: objective-c
 os: osx
 osx_image: xcode8.3
 sudo: required
-branches:
-  only:
-  - master
-  - "/^v[\\d\\.]+$/"
 script:
 - make build
 before_deploy:
