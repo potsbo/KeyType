@@ -50,7 +50,7 @@ class KeyEventWatcher {
         func callback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, refcon: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>? {
             guard let observer = refcon else { return Unmanaged.passRetained(event) }
             let mySelf = Unmanaged<KeyEventWatcher>.fromOpaque(observer).takeUnretainedValue()
-            return mySelf.eventCallback(proxy: proxy, type: type, event: event)
+            return Unmanaged.passRetained(mySelf.eventCallback(proxy: proxy, type: type, event: event))
         }
 
         let tap = CGEvent.tapCreate(
@@ -65,13 +65,13 @@ class KeyEventWatcher {
         return tap
     }
 
-    private func eventCallback(proxy _: CGEventTapProxy, type: CGEventType, event: CGEvent) -> Unmanaged<CGEvent>? {
+    private func eventCallback(proxy _: CGEventTapProxy, type: CGEventType, event: CGEvent) -> CGEvent {
         switch type {
         case .flagsChanged:
             if event.isModiferKeyEvent() {
                 return event.isModiferKeyDownEvent() ? modifierKeyDown(event) : modifierKeyUp(event)
             } else {
-                return Unmanaged.passRetained(event)
+                return event
             }
         case .keyDown:
             return keyDown(event)
@@ -79,34 +79,34 @@ class KeyEventWatcher {
             return keyUp(event)
         default:
             keyCode = nil
-            return Unmanaged.passRetained(event)
+            return event
         }
     }
 
-    private func keyDown(_ event: CGEvent) -> Unmanaged<CGEvent>? {
+    private func keyDown(_ event: CGEvent) -> CGEvent {
         keyCode = nil
         let event = config.getConvertedEvent(event) ?? event
-        return Unmanaged.passRetained(event)
+        return event
     }
 
-    private func keyUp(_ event: CGEvent) -> Unmanaged<CGEvent>? {
+    private func keyUp(_ event: CGEvent) -> CGEvent {
         keyCode = nil
         let event = config.getConvertedEvent(event) ?? event
-        return Unmanaged.passRetained(event)
+        return event
     }
 
-    private func modifierKeyDown(_ event: CGEvent) -> Unmanaged<CGEvent>? {
+    private func modifierKeyDown(_ event: CGEvent) -> CGEvent {
         keyCode = event.keyCode
-        return Unmanaged.passRetained(event)
+        return event
     }
 
-    private func modifierKeyUp(_ event: CGEvent) -> Unmanaged<CGEvent>? {
+    private func modifierKeyUp(_ event: CGEvent) -> CGEvent {
         if keyCode == event.keyCode {
             if let convertedEvent = config.getConvertedEvent(event) {
                 KeyCombination(fromEvent: convertedEvent).postEvent()
             }
         }
         keyCode = nil
-        return Unmanaged.passRetained(event)
+        return event
     }
 }
