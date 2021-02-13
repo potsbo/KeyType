@@ -18,6 +18,10 @@ class Remap: NSObject {
         self.output = output
     }
 
+    var label: String {
+        return "\(input.label) => \(output.label)"
+    }
+
     func renderEventFlag(for event: CGEvent) -> CGEventFlags {
         let rawValue = (event.flags.rawValue & ~input.flags.rawValue) | output.flags.rawValue
         return CGEventFlags(rawValue: rawValue)
