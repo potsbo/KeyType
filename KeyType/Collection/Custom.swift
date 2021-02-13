@@ -15,4 +15,6 @@ let Custom = [
     Remap(Key.ctrlR.without.ctrl, to: Key.ESCAPE.alone),
     // To launch OmniFocus faster
     Remap(Key.shiftL.without.shift, to: Key.SPACE.with.shift.command.option),
+    // To launch Toggl faster
+    Remap(Key.optionR.without.option, to: Key.SPACE.with.command.shift.option.ctrl),
 ]
