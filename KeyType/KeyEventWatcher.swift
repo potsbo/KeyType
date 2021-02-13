@@ -68,18 +68,13 @@ class KeyEventWatcher {
     private func eventCallback(proxy _: CGEventTapProxy, type: CGEventType, event: CGEvent) -> CGEvent {
         switch type {
         case .flagsChanged:
-            if event.isModiferKeyEvent() {
-                return event.isModiferKeyDownEvent() ? modifierKeyDown(event) : modifierKeyUp(event)
-            } else {
-                return event
-            }
+            return flagsChanged(event)
         case .keyDown:
             return keyDown(event)
         case .keyUp:
             return keyUp(event)
         default:
-            keyCode = nil
-            return event
+            return others(event)
         }
     }
 
@@ -95,6 +90,13 @@ class KeyEventWatcher {
         return event
     }
 
+    private func flagsChanged(_ event: CGEvent) -> CGEvent {
+        if event.isModiferKeyEvent() {
+            return event.isModiferKeyDownEvent() ? modifierKeyDown(event) : modifierKeyUp(event)
+        }
+        return event
+    }
+
     private func modifierKeyDown(_ event: CGEvent) -> CGEvent {
         keyCode = event.keyCode
         return event
@@ -106,6 +108,11 @@ class KeyEventWatcher {
                 KeyCombination(fromEvent: convertedEvent).postEvent()
             }
         }
+        keyCode = nil
+        return event
+    }
+
+    private func others(_ event: CGEvent) -> CGEvent {
         keyCode = nil
         return event
     }
